@@ -1,0 +1,109 @@
+version: '3.2'
+services:
+
+    app:
+        image: andreyhristov/internship-app-base:latest
+        container_name: internship_app
+        depends_on:
+            - mysql-db
+        expose:
+            - 80 # use ports 8000:80 if you want to have it at localhost:8000
+        volumes:
+            - "./../../app/:/app"
+            - "./../assets/:/assets:ro"
+            - "./volumes/apache_logs:/var/log/apache2/"
+        ports:
+            - 4080:80
+        environment:
+            TZ: "Europe/Sofia"
+            APP_ROOT_DIR: /app
+            VIRTUAL_HOST: "app.internship"
+            VIRTUAL_PORT: 80
+            MYSQL_HOST: "mysql-db" # better use docker secrets but this is for demo purposes
+            MYSQL_USER: "user"
+            MYSQL_PASSWORD: "pass"
+        networks:
+            - frontend
+            - backend
+
+    composer:
+        image: composer:1.6
+        container_name: internship_composer
+        restart: on-failure
+        volumes:
+            - "./../../app/:/app"
+            - ./volumes/composer-cache:/composer/cache
+        working_dir: /app
+        environment:
+            TZ: "Europe/Sofia"
+
+    mailhog:
+        container_name: internship_mailhog
+        image: mailhog/mailhog
+        expose: [ 1025, 8025 ]
+        networks:
+           - frontend
+           - backend
+        environment:
+           VIRTUAL_HOST: 'mailhog.internship'
+           VIRTUAL_PORT: '8025'
+           TZ: "Europe/Sofia"
+
+
+    mysql-db:
+        image: mysql:5.7
+        container_name: internship_mysqldb
+        command: [mysqld, --innodb-file-per-table]
+        restart: on-failure
+        volumes:
+            - "./volumes/mysql:/var/lib/mysql"
+        networks:
+            - backend
+        ports:
+            - 13306:3306
+        environment:
+            TZ: "UTC"
+            MYSQL_ROOT_PASSWORD: 123456 # this is for demo purposes, in real systems use MYSQL_ROOT_PASSWORD_FILE and docker secrets
+            MYSQL_USER: "mysql" # this is for demo purposes, in real systems use MYSQL_USER_FILE and docker secrets
+            MYSQL_PASSWORD: "pass" # this is for demo purposes, in real systems use MYSQL_PASSWORD_FILE and docker secrets
+            ADDITIONAL_DATABASES: "test_db"
+
+    pma-local:
+        image: phpmyadmin/phpmyadmin:4.7
+        container_name: internship_pma_local
+        depends_on:
+            - mysql-db
+        networks:
+            - frontend
+            - backend
+        environment:
+            TZ: "Europe/Sofia"
+            PMA_HOSTS: mysql-db
+            PMA_PORTS: 3306
+            PMA_USER: root
+            PMA_PASSWORD: 123456
+            VIRTUAL_HOST: "pma.internship"
+
+    proxy:
+        image: jwilder/nginx-proxy:0.4.0
+        container_name: internship_proxy
+        restart: always
+        networks:
+            - frontend
+        ports:
+            - "80:80"
+            - "443:443"
+        volumes:
+            - "/var/run/docker.sock:/tmp/docker.sock:ro"
+            - "./config/proxy/certs:/etc/nginx/certs"
+            - "./config/proxy/vhost.d:/etc/nginx/vhost.d"
+            - "./config/proxy/htpasswd:/etc/nginx/htpasswd"
+        environment:
+            TZ: "Europe/Sofia"
+
+networks:
+    frontend:
+      driver: bridge
+
+    backend:
+      driver: bridge

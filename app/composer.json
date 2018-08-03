@@ -1,0 +1,8 @@
+{
+    "name": "Internship",
+    "type": "project",
+    "description": "Internship demo project",
+    "require": {
+        "monolog/monolog": "1.23.*"
+    }
+}
