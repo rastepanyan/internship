@@ -1,0 +1,6 @@
+index:
+    path: /
+    controller: Internship\Controller\IndexController::index
+hello:
+    path: /hello
+    controller: Internship\Controller\HelloController::hello
