@@ -56,8 +56,12 @@ composer-install:
 composer-update:
 	$(DC) run --rm --user 1000:1000 composer sh -c "composer --working-dir=/app update"
 
+composer-shell:
+	$(DC) run --rm --user 1000:1000 composer bash
+
 shell:
 	$(DC) exec app bash
+
 
 hosts-clean:
 	@sudo sed -i  '/$(PROJECT_NAME)-local-development/d' /etc/hosts
