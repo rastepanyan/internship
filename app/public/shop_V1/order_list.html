@@ -3,7 +3,7 @@
    <head>
       <title>Shop</title>
       <meta content="IE=edge" http-equiv="X-UA-Compatible">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="viewport" content="width=device-width, initial-scale=1 shrink-to-fit=no">
       <meta charset="utf-8">
       <meta content="shop, online, bargain, quality, free, shoes, belts, dresses, jackets, hats, trousers, Plovdiv, centre" name="keywords">
       <link href="css/lib/bootstrap.css" rel="stylesheet">
@@ -45,49 +45,58 @@
                <div class="col-lg-9">
                   <div class="card card-outline-secondary">
                      <div class="card-header">
-                        <h5><strong>ORDERS</strong></h5>
+                        <h5><strong>Orders</strong></h5>
                      </div>
                      <div class="card-body">
-                        <table class="table">
+                        <table class="table table-responsive w-100 d-block d-md-table">
                            <thead class="thead-light">
                               <tr>
-                                 <th>Order ID</th>
-                                 <th>Name</th>
-                                 <th>Order Date</th>
-                                 <th>Total Amount</th>
+                                 <th scope="col" class="text-uppercase small font-weight-bold">order id</th>
+                                 <th scope="col" class="text-uppercase small font-weight-bold">name</th>
+                                 <th scope="col" class="text-uppercase small font-weight-bold">order date</th>
+                                 <th scope="col" class="text-uppercase small font-weight-bold">total amount</th>
                                  <th></th>
                               </tr>
                            </thead>
-                           <tr>
-                              <td>1</td>
-                              <td>Rafi Stepanyan</td>
-                              <td>2018-07-30 10:09:57</td>
-                              <td>£235.76</td>
-                              <td class="actions">
-                                 <a class="btn btn-primary btn-sm" href="orders/order_1.html">View</a>							
-                              </td>
-                           </tr>
-                           <tr>
-                              <td>2</td>
-                              <td>Richard Weber</td>
-                              <td>2018-07-30 16:23:26</td>
-                              <td>£167.28</td>
-                              <td class="actions">
-                                 <a class="btn btn-primary btn-sm" href="orders/order_2.html">View</a>							
-                              </td>
-                           </tr>
-                           <tr>
-                              <td>3</td>
-                              <td>Milica Grueva</td>
-                              <td>2018-08-03 12:45:37</td>
-                              <td>£411.66</td>
-                              <td class="actions">
-                                 <a class="btn btn-primary btn-sm" href="orders/order_3.html">View</a>								
-                              </td>
-                           </tr>
+                           <tbody>
+                              <tr>
+                                 <th scope="row">1</th>
+                                 <td>Rafi Stepanyan</td>
+                                 <td>2018-07-30 10:09:57</td>
+                                 <td>£282.92</td>
+                                 <td>
+                                    <a class="btn btn-primary btn-sm" href="orders/order_1.html">View</a>							
+                                 </td>
+                              </tr>
+                              <tr>
+                                 <th scope="row">1</th>
+                                 <td>Richard Weber</td>
+                                 <td>2018-07-30 16:23:26</td>
+                                 <td>£167.28</td>
+                                 <td>
+                                    <a class="btn btn-primary btn-sm" href="orders/order_2.html">View</a>							
+                                 </td>
+                              </tr>
+                              <tr>
+                                 <th scope="row">1</th>
+                                 <td>Milica Grueva</td>
+                                 <td>2018-08-03 12:45:37</td>
+                                 <td>£411.66</td>
+                                 <td>
+                                    <a class="btn btn-primary btn-sm" href="orders/order_3.html">View</a>								
+                                 </td>
+                              </tr>
+                           </tbody>
                         </table>
                         <hr>
-                        <a href="checkout.html" class="btn btn-primary btn-sm">Checkout</a>
+                        <div class="row w-100 d-block">
+                           <div class="col">
+                              <div class="float-left">
+                                 <a href="checkout.html" class="btn btn-primary btn-md">Checkout</a>
+                                 <a href="index.html" class="btn btn-primary btn-md">Back</a>				  
+                              </div>
+                           </div>
+                        </div>
                      </div>
                   </div>
                </div>
