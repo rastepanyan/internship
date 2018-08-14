@@ -38,11 +38,11 @@
             <div class="row">
                <div class="col-lg-3">
                   <div class="list-group">
-                     <h4><strong>SHOPPING CART</strong></h4>
+                     <a href="product_list.html" class="list-group-item active">Product List</a>
+                     <a href="#" class="list-group-item">Order List</a>
                   </div>
                </div>
                <div class="col-lg-9">
-                  <hr>
                   <div class="card card-outline-secondary">
                      <div class="card-header">
                         <div class="card-body">
@@ -51,6 +51,7 @@
                                  <tr>
                                     <th>Product</th>
                                     <th>Price</th>
+									<th>VAT</th>
                                     <th>Quantity</th>
                                     <th class="text-center">Subtotal</th>
                                     <th></th>
@@ -67,13 +68,13 @@
                                        </div>
                                     </td>
                                     <td data-th="Price">£119.99</td>
+                                    <td data-th="VAT">20%</td>									 
                                     <td data-th="Quantity">
                                        <input type="number" min="1" class="form-control text-center" value="1">
                                     </td>
                                     <td data-th="Subtotal" class="text-center">£119.99</td>
-                                    <td class="actions" data-th="">
-                                       <button class="btn btn-info btn-sm"><i class="fa fa-refresh"></i></button>
-                                       <button class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button>								
+                                    <td class="actions">
+                                       <a class="btn btn-danger btn-sm" href="#">Delete</a>								
                                     </td>
                                  </tr>
                                  <tr>
@@ -86,13 +87,13 @@
                                        </div>
                                     </td>
                                     <td data-th="Price">£89.99</td>
+                                    <td data-th="VAT">20%</td>									 
                                     <td data-th="Quantity">
                                        <input type="number" min="1" class="form-control text-center" value="1">
                                     </td>
                                     <td data-th="Subtotal" class="text-center">£89.99</td>
-                                    <td class="actions" data-th="">
-                                       <button class="btn btn-info btn-sm"><i class="fa fa-refresh"></i></button>
-                                       <button class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button>								
+                                    <td class="actions">
+                                       <a class="btn btn-danger btn-sm" href="#">Delete</a>								
                                     </td>
                                  </tr>
                                  <tr>
@@ -105,22 +106,22 @@
                                        </div>
                                     </td>
                                     <td data-th="Price">£12.89</td>
+                                    <td data-th="VAT">20%</td>									 
                                     <td data-th="Quantity">
                                        <input type="number" min="1" class="form-control text-center" value="1">
                                     </td>
                                     <td data-th="Subtotal" class="text-center">£12.89</td>
-                                    <td class="actions" data-th="">
-                                       <button class="btn btn-info btn-sm"><i class="fa fa-refresh"></i></button>
-                                       <button class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button>								
+                                    <td class="actions">
+                                       <a class="btn btn-danger btn-sm" href="#">Delete</a>								
                                     </td>
                                  </tr>
                               </tbody>
                               <tfoot>
                                  <tr>
-                                    <td><a href="order_list.html" class="btn btn-primary"><i class="fa fa-angle-left"></i>Back</a></td>
+                                    <td><a class="btn btn-primary" href="order_list.html">Back</a></td>
                                     <td colspan="2" class="hidden-xs"></td>
                                     <td class="hidden-xs text-center"><strong>Total Amount: £235.76</strong></td>
-                                    <td><a href="checkout.html" class="btn btn-primary btn-block">Go to Checkout<i class="fa fa-angle-right"></i></a></td>
+                                    <td><a class="btn btn-primary btn-block" href="checkout.html">Go to Checkout</a></td>
                                  </tr>
                               </tfoot>
                            </table>
