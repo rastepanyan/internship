@@ -11,14 +11,14 @@
    <body>
       <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
          <div class="container">
-            <a class="navbar-brand" href="../index.html">ONLINE SHOP</a>
+            <a class="navbar-brand" href="../index.php">ONLINE SHOP</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                <ul class="navbar-nav ml-auto">
                   <li class="nav-item active">
-                     <a class="nav-link" href="../index.html">Home</a>
+                     <a class="nav-link" href="../index.php">Home</a>
                   </li>
                </ul>
                <ul class="navbar-nav ml-right">
@@ -52,25 +52,32 @@
                      </thead>
                      <tbody>
                         <tr>
-                           <th scope="row">1</th>
+                           <th scope="row">3</th>
                            <td>1</td>
+                           <td>Dress</td>
+                           <td>1</td>
+                           <td>£129.29</td>
+                        </tr>
+                        <tr>
+                           <th scope="row">3</th>
+                           <td>2</td>
+                           <td>Hat</td>
+                           <td>1</td>
+                           <td>£12.89</td>
+                        </tr>
+                        <tr>
+                           <th scope="row">3</th>
+                           <td>3</td>
                            <td>Shoes</td>
-                           <td>1</td>
+                           <td>2</td>
                            <td>£119.99</td>
                         </tr>
                         <tr>
-                           <th scope="row">1</th>
-                           <td>2</td>
-                           <td>Trousers</td>
+                           <th scope="row">3</th>
+                           <td>4</td>
+                           <td>Belt</td>
                            <td>1</td>
-                           <td>£89.99</td>
-                        </tr>
-                        <tr>
-                           <th scope="row">1</th>
-                           <td>3</td>
-                           <td>Hat</td>
-                           <td>2</td>
-                           <td>£12.89</td>
+                           <td>£29.50</td>
                         </tr>
                      </tbody>
                   </table>
@@ -78,12 +85,12 @@
                   <div class="row w-100 d-block">
                      <div class="col">
                         <div class="float-left">
-                           <a href="../checkout.html" class="btn btn-primary btn-block">Checkout</a>
-                           <a href="../order_list.html" class="btn btn-primary btn-block">Back</a>				  
+                           <a href="../checkout.php" class="btn btn-primary btn-block">Checkout</a>
+                           <a href="../order_list.php" class="btn btn-primary btn-block">Back</a>				  
                         </div>
                         <div class="float-right">
                            <a href="#" class="btn btn-info btn-block">Edit</a>
-                           <a href="#" class="btn btn-danger btn-block">Delete</a>								  
+                           <a href="#" class="btn btn-danger btn-block">Delete</a>	
                         </div>
                      </div>
                   </div>

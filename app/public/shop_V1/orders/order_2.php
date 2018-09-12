@@ -11,14 +11,14 @@
    <body>
       <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
          <div class="container">
-            <a class="navbar-brand" href="../index.html">ONLINE SHOP</a>
+            <a class="navbar-brand" href="../index.php">ONLINE SHOP</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                <ul class="navbar-nav ml-auto">
                   <li class="nav-item active">
-                     <a class="nav-link" href="../index.html">Home</a>
+                     <a class="nav-link" href="../index.php">Home</a>
                   </li>
                </ul>
                <ul class="navbar-nav ml-right">
@@ -71,8 +71,8 @@
                   <div class="row w-100 d-block">
                      <div class="col">
                         <div class="float-left">
-                           <a href="../checkout.html" class="btn btn-primary btn-block">Checkout</a>
-                           <a href="../order_list.html" class="btn btn-primary btn-block">Back</a>				  
+                           <a href="../checkout.php" class="btn btn-primary btn-block">Checkout</a>
+                           <a href="../order_list.php" class="btn btn-primary btn-block">Back</a>				  
                         </div>
                         <div class="float-right">
                            <a href="#" class="btn btn-info btn-block">Edit</a>
