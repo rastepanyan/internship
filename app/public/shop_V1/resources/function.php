@@ -64,3 +64,4 @@ function show_order($conn, $id)
         include_once("./resources/templates/front/order_item.php");
     }
 }
+

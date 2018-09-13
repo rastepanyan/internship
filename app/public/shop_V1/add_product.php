@@ -17,21 +17,22 @@
         </div>
         <div class="row">
             <div class="col-lg-3">
-                <div class="list-group">
-                    <a class="list-group-item active" href="">Product List</a>
-                    <a class="list-group-item" href="order_list.php">Order List</a>
-                    <hr>
-                    <a class="btn btn-danger btn-md text-left" href="add_product.php">Add Product</a>
+                <!-- GROUP SHORTCUTS -->
+                <?php include(FRONT . DS . "group_shortcut.php") ?>
+            </div>
+            <!-- ADD PRODUCT -->
+            <div class="col-lg-9">
+                <div class="card card-outline-secondary">
+                    <div class="card-header">
+                        <h5><strong>Add product</strong></h5>
+                    </div>
+                    <?php include(FRONT . DS . "add_new.php") ?>
                 </div>
             </div>
-            <!-- PRODUCT LIST -->
-            <div class="col-lg-9">
-                <?php get_products($conn); ?>
-            </div>
         </div>
+        <!-- FOOTER -->
+        <?php include(FRONT . DS . "footer.php") ?>
     </div>
-    <!-- FOOTER -->
-    <?php include(FRONT . DS . "footer.php") ?>
 </div>
 </body>
 </html>

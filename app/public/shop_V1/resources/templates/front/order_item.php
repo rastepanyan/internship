@@ -18,7 +18,7 @@
             $result = $conn->query($sql);
             while ($row = $result->fetch_assoc()) {
                 echo '<tr>';
-                echo '<th scope="row">' . $row['order_id'] . '</th><td>' . $row['positions'] . '</td><td>' . $row['product_id'] . '</td><td>' . $row['quantity'] . '</td><td>' . $row['item_price'] . '</td>';
+                echo '<th scope="row">' . $row['order_id'] . '</th><td>' . $row['positions'] . '</td><td>' . $row['product_id'] . '</td><td>' . $row['quantity'] . '</td><td>' . "&#163;" . $row['item_price'] . '</td>';
                 echo '</tr>';
             }
             ?>
