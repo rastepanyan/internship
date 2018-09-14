@@ -24,11 +24,11 @@
         <div class="row w-100 d-block">
             <div class="col">
                 <div class="float-left">
-                    <a href="../cart.php" class="btn btn-primary btn-block">Add to Cart</a>
-                    <a href="../product_list.php" class="btn btn-primary btn-block">Cancel</a>
+                    <a href="./cart.php" class="btn btn-primary btn-block">Add to Cart</a>
+                    <a href="./product_list.php" class="btn btn-primary btn-block">Cancel</a>
                 </div>
                 <div class="float-right">
-                    <a href="../add/add_dresses.html" class="btn btn-info btn-block">Edit</a>
+                    <a href="#" class="btn btn-info btn-block">Edit</a>
                     <a href="#" class="btn btn-danger btn-block">Delete</a>
                 </div>
             </div>

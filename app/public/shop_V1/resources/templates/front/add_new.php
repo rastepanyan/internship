@@ -34,7 +34,7 @@
         <label class="col-md-4 control-label" for="submit"></label>
         <div class="col-md-4">
             <input class="btn btn-danger btn-md" type="submit" value="Save">
-            <a class="btn btn-info btn-md" href="../product_list.php">Back</a>
+            <a class="btn btn-info btn-md" href="./product_list.php">Back</a>
         </div>
     </div>
 </div>
