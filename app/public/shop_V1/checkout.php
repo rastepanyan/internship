@@ -42,7 +42,7 @@
                         <h5><strong>Billing Address</strong></h5>
                      </div>
                      <div class="card-body">
-                        <div class="row">
+                         <div class="row">
                            <div class="col-md-6 mb-2">
                               <div class="md-form">
                                  <label for="first_name-billing">First name:</label>

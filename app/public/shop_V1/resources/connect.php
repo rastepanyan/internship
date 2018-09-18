@@ -1,4 +1,5 @@
 <?php
+
 defined("DS") ? null : define("DS", DIRECTORY_SEPARATOR);
 
 defined("FRONT") ? null : define("FRONT", __DIR__ . DS . "templates/front");

@@ -6,10 +6,29 @@ if (!$conn->connect_errno) {
     echo "Connection established";
 }
 */
+
+// escape string
+function escape_string($conn, $val)
+{
+    return mysqli_real_escape_string($conn, trim($val));
+}
+
 function redirect()
 {
     header("Location: {$_SERVER['HTTP_REFERER']}");
     exit;
+}
+
+//display error
+function display_error($errors)
+{
+    if (is_array($errors) > 0) {
+        echo '<div class="error">';
+        foreach ($errors as $error) {
+            echo $error . '<br>';
+        }
+        echo '</div>';
+    }
 }
 
 //get products
@@ -74,11 +93,11 @@ function show_order($conn, $id)
 //add product
 function add_product($conn)
 {
-    $title = $conn->real_escape_string($_REQUEST['title']);
-    $price = $conn->real_escape_string($_REQUEST['price']);
-    $description = $conn->real_escape_string($_REQUEST['description']);
-    $date_of_creation = $conn->real_escape_string($_REQUEST['date_of_creation']);
-    $images = $conn->real_escape_string($_REQUEST['images']);
+    $title = $conn->escape_string($_REQUEST['title']);
+    $price = $conn->escape_string($_REQUEST['price']);
+    $description = $conn->escape_string($_REQUEST['description']);
+    $date_of_creation = $conn->escape_string($_REQUEST['date_of_creation']);
+    $images = $conn->escape_string($_REQUEST['images']);
 
     $sql = "INSERT INTO products (title, price, description, images, date_of_creation) VALUES ('$title', '$price', '$description', '$images', NOW($date_of_creation))";
 
@@ -87,4 +106,101 @@ function add_product($conn)
     } else {
         echo "ERROR: Record not added $sql. " . $conn->error;
     }
+}
+
+//add to cart
+function add_to_cart()
+{
+    if (empty($_SESSION['title'])) {
+        $_SESSION['title'] = array();
+        $_SESSION['price'] = array();
+        $_SESSION['vat'] = array();
+        $_SESSION['quantity'] = array();
+        $_SESSION['subtotal'] = array();
+    }
+
+    array_push($_SESSION['title']);
+    array_push($_SESSION['quantity']);
+
+    $details = explode("|", S_POST[item]);
+    array_push($_SESSION['title'], $details[0]);
+}
+
+//login user
+function login_user($conn, $errors, $username, $password)
+{
+    if (empty($username)) {
+        array_push($errors, "User name is required");
+    }
+    if (empty($password)) {
+        array_push($errors, "Password is required");
+    }
+
+    $query = "SELECT * FROM users WHERE username = '{$username}' AND password = '{$password}'";
+
+    $conn->query($query);
+    header('location: index.php');
+}
+
+//register user
+function register($conn, $errors, $first_name, $last_name, $address, $post_code, $city, $country_code, $username, $password_1, $password_2)
+{
+
+    if (empty($first_name)) {
+        array_push($errors, "First name is required");
+    }
+    if (empty($last_name)) {
+        array_push($errors, "Last name is required");
+    }
+    if (empty($address)) {
+        array_push($errors, "Address is required");
+    }
+    if (empty($post_code)) {
+        array_push($errors, "Post code is required");
+    }
+    if (empty($city)) {
+        array_push($errors, "City is required");
+    }
+    if (empty($country_code)) {
+        array_push($errors, "Country code is required");
+    }
+    if (empty($username)) {
+        array_push($errors, "User name is required");
+    }
+    if (empty($password_1)) {
+        array_push($errors, "Password is required");
+    }
+    if ($password_1 != $password_2) {
+        array_push($errors, "The two passwords do not match!");
+    }
+
+
+    if (is_array($errors) == 0) {
+        $password = md5($password_1);
+
+        if (isset($_POST['user_type'])) {
+            $user_type = e($_POST['user_type']);
+            $query = "INSERT INTO users (first_name, last_name, address, post_code, city, country_code, user_type, username, password) 
+					  VALUES('$first_name', '$last_name', '$address', '$post_code', '$city', '$country_code', '$user_type', '$username', '$password')";
+
+            $conn->query($query);
+            $_SESSION['success'] = "New user successfully created!!";
+            header('location: index.php');
+        } else {
+            $query = "INSERT INTO users (first_name, last_name, address, post_code, city, country_code, user_type, username, password)
+					  VALUES('$first_name', '$last_name', '$address', '$post_code', '$city', '$country_code', 'user', '$username', '$password')";
+            $conn->query($query);
+            header('location: index.php');
+        }
+    }
+}
+
+//return user array from their id
+function get_user_by_id($conn, $id)
+{
+    $query = "SELECT * FROM users WHERE id=" . $id;
+    $result = $conn->query($query);
+
+    $user = $result->fetch_assoc();
+    return $user;
 }

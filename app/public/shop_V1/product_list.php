@@ -26,9 +26,14 @@
             </div>
             <!-- PRODUCT LIST -->
             <div class="col-lg-9">
+                <div class="card card-outline-secondary">
+                    <div class="card-header">
+                        <h5><strong>Products</strong></h5>
+                    </div>
                 <?php get_products($conn); ?>
             </div>
         </div>
+    </div>
     </div>
     <!-- FOOTER -->
     <?php include(FRONT . DS . "footer.php") ?>

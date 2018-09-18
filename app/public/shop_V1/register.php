@@ -20,21 +20,13 @@
                 <!-- GROUP SHORTCUTS -->
                 <?php include(FRONT . DS . "group_shortcut.php") ?>
             </div>
-            <!-- VIEW SINGLE ORDER -->
+            <!-- REGISTER -->
             <div class="col-lg-9">
-                <?php show_order($conn, $_GET['id']); ?>
-                <hr>
-                <div class="row w-100 d-block">
-                    <div class="col">
-                        <div class="float-left">
-                            <a href="./checkout.php" class="btn btn-primary btn-block">Checkout</a>
-                            <a href="./order_list.php" class="btn btn-primary btn-block">Back</a>
-                        </div>
-                        <div class="float-right">
-                            <a href="#" class="btn btn-info btn-block">Edit</a>
-                            <a href="#" class="btn btn-danger btn-block">Delete</a>
-                        </div>
+                <div class="card card-outline-secondary">
+                    <div class="card-header">
+                        <h5><strong>Registration Form</strong></h5>
                     </div>
+                    <?php include(FRONT . DS . "registration_add.php") ?>
                 </div>
             </div>
         </div>
