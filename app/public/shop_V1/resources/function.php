@@ -7,28 +7,38 @@ if (!$conn->connect_errno) {
 }
 */
 
-// escape string
+//prevent MYSQL injection
 function escape_string($conn, $val)
 {
     return mysqli_real_escape_string($conn, trim($val));
 }
 
-function redirect()
+//redirect page
+function redirect($location)
 {
-    header("Location: {$_SERVER['HTTP_REFERER']}");
-    exit;
+    sleep(0);
+    return header("Location: $location");
 }
 
-//display error
-function display_error($errors)
+//set message
+function set_message($msg)
 {
-    if (is_array($errors) > 0) {
-        echo '<div class="error">';
-        foreach ($errors as $error) {
-            echo $error . '<br>';
-        }
-        echo '</div>';
+
+    if (!empty($msg)) {
+        $_SESSION['message'] = $msg;
+    } else {
+        $msg = "";
     }
+}
+
+//display message
+function display_message()
+{
+    if (isset($_SESSION['message'])) {
+        echo $_SESSION['message'];
+        unset($_SESSION['message']);
+    }
+
 }
 
 //get products
@@ -102,7 +112,7 @@ function add_product($conn)
     $sql = "INSERT INTO products (title, price, description, images, date_of_creation) VALUES ('$title', '$price', '$description', '$images', NOW($date_of_creation))";
 
     if ($conn->query($sql) === true) {
-        redirect();
+        redirect("../product_list.php");
     } else {
         echo "ERROR: Record not added $sql. " . $conn->error;
     }
@@ -136,10 +146,18 @@ function login_user($conn, $errors, $username, $password)
         array_push($errors, "Password is required");
     }
 
-    $query = "SELECT * FROM users WHERE username = '{$username}' AND password = '{$password}'";
+    $sql = "SELECT * FROM users WHERE username = '$username' AND password = '$password'";
+    $result = $conn->query($sql);
+    $count = mysqli_num_rows($result);
 
-    $conn->query($query);
-    header('location: index.php');
+    if ($count == 1) {
+        set_message("Welcome {$username}!");
+        redirect("index.php");
+
+    } else {
+        set_message("Your user name or password are wrong");
+        redirect("login.php");
+    }
 }
 
 //register user
@@ -171,7 +189,7 @@ function register($conn, $errors, $first_name, $last_name, $address, $post_code,
         array_push($errors, "Password is required");
     }
     if ($password_1 != $password_2) {
-        array_push($errors, "The two passwords do not match!");
+        array_push($errors, "Password do not match!");
     }
 
 
@@ -180,17 +198,17 @@ function register($conn, $errors, $first_name, $last_name, $address, $post_code,
 
         if (isset($_POST['user_type'])) {
             $user_type = e($_POST['user_type']);
-            $query = "INSERT INTO users (first_name, last_name, address, post_code, city, country_code, user_type, username, password) 
+            $sql = "INSERT INTO users (first_name, last_name, address, post_code, city, country_code, user_type, username, password) 
 					  VALUES('$first_name', '$last_name', '$address', '$post_code', '$city', '$country_code', '$user_type', '$username', '$password')";
 
-            $conn->query($query);
+            $conn->query($sql);
             $_SESSION['success'] = "New user successfully created!!";
-            header('location: index.php');
+            redirect("index.php");
         } else {
-            $query = "INSERT INTO users (first_name, last_name, address, post_code, city, country_code, user_type, username, password)
+            $sql = "INSERT INTO users (first_name, last_name, address, post_code, city, country_code, user_type, username, password)
 					  VALUES('$first_name', '$last_name', '$address', '$post_code', '$city', '$country_code', 'user', '$username', '$password')";
-            $conn->query($query);
-            header('location: index.php');
+            $conn->query($sql);
+            redirect("index.php");
         }
     }
 }
@@ -198,8 +216,8 @@ function register($conn, $errors, $first_name, $last_name, $address, $post_code,
 //return user array from their id
 function get_user_by_id($conn, $id)
 {
-    $query = "SELECT * FROM users WHERE id=" . $id;
-    $result = $conn->query($query);
+    $sql = "SELECT * FROM users WHERE id=" . $id;
+    $result = $conn->query($sql);
 
     $user = $result->fetch_assoc();
     return $user;

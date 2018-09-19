@@ -20,19 +20,13 @@
                 <!-- GROUP SHORTCUTS -->
                 <?php include(FRONT . DS . "group_shortcut.php") ?>
             </div>
-            <!-- VIEW SINGLE ORDER -->
+            <!-- CONTACTS -->
             <div class="col-lg-9">
-                <?php show_order($conn, $_GET['id']); ?>
-                <hr>
-                <div class="row w-100 d-block">
-                    <div class="col">
-                        <div class="float-left">
-                            <a href="./checkout.php" class="btn btn-primary btn-block">Checkout</a>
-                        </div>
-                        <div class="float-right">
-                            <a href="./order_list.php" class="btn btn-primary btn-block">Back</a>
-                        </div>
+                <div class="card card-outline-secondary">
+                    <div class="card-header">
+                        <h5><strong>Contact Us</strong></h5>
                     </div>
+                    <?php include(FRONT . DS . "contact_add.php") ?>
                 </div>
             </div>
         </div>

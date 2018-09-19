@@ -1,4 +1,4 @@
-<form action="./resources/send_data.php" method="post">
+<form action="/shop_V1/resources/send_data.php" method="post">
 <div class="card">
     <div class="card-body">
         <div class="col-md-5 mb-2">

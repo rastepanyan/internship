@@ -25,6 +25,7 @@
                 <div class="card card-outline-secondary">
                     <div class="card-header">
                         <h5><strong>Login</strong></h5>
+                        <h3><?php display_message(); ?></h3>
                     </div>
                     <?php include(FRONT . DS . "login_add.php") ?>
                 </div>

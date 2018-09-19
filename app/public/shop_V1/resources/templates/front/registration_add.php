@@ -1,5 +1,4 @@
 <form class="form-group text-center" action="/shop_V1/registration_complete.php" method="post" enctype="multipart/form-data">
-    <?php echo display_error($errors); ?>
     <div class="card-body">
         <div class="px-lg-5 pt-0">
             <div class="row">
