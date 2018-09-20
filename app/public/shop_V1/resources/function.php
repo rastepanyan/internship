@@ -13,6 +13,17 @@ function escape_string($conn, $val)
     return mysqli_real_escape_string($conn, trim($val));
 }
 
+function display_error($errors) {
+
+    if (is_array($errors) > 0){
+        echo '<div class="error">';
+        foreach ($errors as $error){
+            echo $error .'<br>';
+        }
+        echo '</div>';
+    }
+}
+
 //redirect page
 function redirect($location)
 {
@@ -146,17 +157,47 @@ function login_user($conn, $errors, $username, $password)
         array_push($errors, "Password is required");
     }
 
-    $sql = "SELECT * FROM users WHERE username = '$username' AND password = '$password'";
-    $result = $conn->query($sql);
-    $count = mysqli_num_rows($result);
+        $sql = "SELECT * FROM users WHERE username = '$username' AND password = '$password' LIMIT 1";
+        $result = $conn->query($sql);
+        $count = mysqli_num_rows($result);
 
-    if ($count == 1) {
-        set_message("Welcome {$username}!");
-        redirect("index.php");
+        if ($count == 1) {
+            $logged_in_user = $result->fetch_assoc();
 
-    } else {
-        set_message("Your user name or password are wrong");
-        redirect("login.php");
+            if ($logged_in_user['user_type'] == 'admin') {
+
+                $_SESSION['user'] = $logged_in_user;
+                $_SESSION['success']  = "You are now logged in";
+                //set_message("Welcome {$username}!");
+                redirect("/shop_V1/admin/home.php");
+
+            } else {
+                $_SESSION['user'] = $logged_in_user;
+                $_SESSION['success']  = "You are now logged in";
+                //set_message("Welcome {$username}!");
+                redirect("/shop_V1/index.php");
+            }
+        } else {
+            set_message("Username or Password are wrong!");
+            redirect("login.php");
+        }
+}
+
+function is_user()
+{
+    if (isset($_SESSION['user'])) {
+        return true;
+    }else{
+        return false;
+    }
+}
+
+function is_admin()
+{
+    if (isset($_SESSION['user'])) {
+        return true;
+    }else{
+        return false;
     }
 }
 
@@ -197,28 +238,24 @@ function register($conn, $errors, $first_name, $last_name, $address, $post_code,
         $password = md5($password_1);
 
         if (isset($_POST['user_type'])) {
-            $user_type = e($_POST['user_type']);
+            $user_type = escape_string($_POST['user_type']);
             $sql = "INSERT INTO users (first_name, last_name, address, post_code, city, country_code, user_type, username, password) 
 					  VALUES('$first_name', '$last_name', '$address', '$post_code', '$city', '$country_code', '$user_type', '$username', '$password')";
 
             $conn->query($sql);
-            $_SESSION['success'] = "New user successfully created!!";
-            redirect("index.php");
+            redirect("home.php");
         } else {
             $sql = "INSERT INTO users (first_name, last_name, address, post_code, city, country_code, user_type, username, password)
 					  VALUES('$first_name', '$last_name', '$address', '$post_code', '$city', '$country_code', 'user', '$username', '$password')";
             $conn->query($sql);
-            redirect("index.php");
+            redirect("home.php");
         }
     }
 }
 
-//return user array from their id
-function get_user_by_id($conn, $id)
+function send_message()
 {
-    $sql = "SELECT * FROM users WHERE id=" . $id;
-    $result = $conn->query($sql);
-
-    $user = $result->fetch_assoc();
-    return $user;
+    if (isset($_POST['send_btn'])) {
+        echo "It's working.";
+    }
 }

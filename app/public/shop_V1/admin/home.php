@@ -1,5 +1,17 @@
 <!-- connect to mysql server -->
-<?php require_once("./resources/connect.php"); ?>
+<?php require_once("../resources/connect.php"); ?>
+<?php
+if (!is_admin()) {
+    $_SESSION['msg'] = "You must log in first";
+    header('location: ../login.php');
+}
+
+if (isset($_GET['logout'])) {
+    session_destroy();
+    unset($_SESSION['user']);
+    header("location: ../login.php");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,7 +24,7 @@
 <div class="container">
     <div class="jumbotron">
         <div class="container-fluid text-center">
-            <h1>Online Shop</h1>
+            <h1>Online Shop Admin Panel</h1>
             <p>Quality, Price and Assortment</p>
         </div>
         <div class="row">
@@ -20,19 +32,11 @@
                 <!-- GROUP SHORTCUTS -->
                 <?php include(FRONT . DS . "group_shortcut.php") ?>
             </div>
-            <!-- LOGIN -->
-            <div class="col-lg-9">
-                <div class="card card-outline-secondary">
-                    <div class="card-header">
-                        <h5><strong>Login</strong></h5>
-                    </div>
-                    <?php include(FRONT . DS . "login_add.php") ?>
-                </div>
-            </div>
+            <!-- HOME INFO -->
+            <?php include(FRONT . DS . "home.php") ?>
         </div>
         <!-- FOOTER -->
         <?php include(FRONT . DS . "footer.php") ?>
     </div>
 </div>
 </body>
-</html>

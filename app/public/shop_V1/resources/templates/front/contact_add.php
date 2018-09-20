@@ -1,4 +1,5 @@
 <form action="/shop_V1/resources/send_message.php" method="post">
+    <?php send_message(); ?>
     <div class="card">
         <div class="card-body">
             <div class="col-md-5 mb-2">
@@ -26,7 +27,7 @@
     <div class="card-body">
         <label class="col-md-4 control-label"></label>
         <div class="col-md-4">
-            <button class="btn btn-danger btn-md" type="send_btn">Send</button>
+            <button type="submit" name="send_btn" class="btn btn-danger btn-md">Send</button>
             <a class="btn btn-info btn-md" href="./index.php">Back</a>
         </div>
     </div>
