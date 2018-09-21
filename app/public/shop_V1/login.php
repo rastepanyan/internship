@@ -1,5 +1,7 @@
-<!-- connect to mysql server -->
-<?php require_once("./resources/connect.php"); ?>
+<?php
+session_start();
+require_once("./resources/connect.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,13 +28,14 @@
                     <div class="card-header">
                         <h5><strong>Login</strong></h5>
                     </div>
-                    <?php include(FRONT . DS . "login_add.php") ?>
+                    <?php include_once("./resources/templates/front/login_add.php"); ?>
                 </div>
             </div>
         </div>
-        <!-- FOOTER -->
-        <?php include(FRONT . DS . "footer.php") ?>
     </div>
+    <!-- FOOTER -->
+    <?php include(FRONT . DS . "footer.php") ?>
+</div>
 </div>
 </body>
 </html>

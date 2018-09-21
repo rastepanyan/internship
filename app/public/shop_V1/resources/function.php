@@ -28,7 +28,7 @@ function display_error($errors) {
 function redirect($location)
 {
     sleep(0);
-    return header("Location: $location", true,  301);
+    header("Location: $location");
     exit;
 }
 
@@ -158,30 +158,31 @@ function login_user($conn, $errors, $username, $password)
         array_push($errors, "Password is required");
     }
 
-        $sql = "SELECT * FROM users WHERE username = '$username' AND password = '$password' LIMIT 1";
-        $result = $conn->query($sql);
-        $count = mysqli_num_rows($result);
+    $sql = "SELECT * FROM users WHERE username = '$username' AND password = '$password' LIMIT 1";
+    $result = $conn->query($sql);
 
-        if ($count == 1) {
-            $logged_in_user = $result->fetch_assoc();
+    $count = mysqli_num_rows($result);
 
-            if ($logged_in_user['user_type'] == 'admin') {
+    if ($count == 1) {
+        $logged_in_user = $result->fetch_assoc();
 
-                $_SESSION['user'] = $logged_in_user;
-                $_SESSION['success']  = "You are now logged in";
-                //set_message("Welcome {$username}!");
-                redirect("/shop_V1/admin/home.php");
+        if ($logged_in_user['user_type'] == 'admin') {
 
-            } else {
-                $_SESSION['user'] = $logged_in_user;
-                $_SESSION['success']  = "You are now logged in";
-                //set_message("Welcome {$username}!");
-                redirect("/shop_V1/index.php");
-            }
+            $_SESSION['user'] = $logged_in_user;
+            $_SESSION['success']  = "You are now logged in";
+            //set_message("Welcome {$username}!");
+            redirect("/shop_V1/admin/home.php");
+
         } else {
-            set_message("Username or Password are wrong!");
-            redirect("login.php");
+            $_SESSION['user'] = $logged_in_user;
+            $_SESSION['success']  = "You are now logged in";
+            //set_message("Welcome {$username}!");
+            redirect("http://app.internship/shop_V1/index.php");
         }
+    } else {
+        set_message("Username or Password are wrong!");
+        redirect("http://app.internship/shop_V1/index.php");
+    }
 }
 
 function is_user()
@@ -200,6 +201,12 @@ function is_admin()
     }else{
         return false;
     }
+}
+
+function logout() {
+        session_destroy();
+        unset($_SESSION['user']);
+        redirect("../../../index.php");
 }
 
 //register user

@@ -1,5 +1,7 @@
-<!-- connect to mysql server -->
-<?php require_once("./resources/connect.php"); ?>
+<?php
+session_start();
+require_once("./resources/connect.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

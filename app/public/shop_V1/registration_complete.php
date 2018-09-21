@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 require_once("./resources/connect.php");
 
 //call the register() function if register_btn is clicked

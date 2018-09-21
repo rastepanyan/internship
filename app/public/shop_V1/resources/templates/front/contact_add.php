@@ -1,5 +1,4 @@
 <form action="/shop_V1/resources/send_message.php" method="post">
-    <?php send_message(); ?>
     <div class="card">
         <div class="card-body">
             <div class="col-md-5 mb-2">

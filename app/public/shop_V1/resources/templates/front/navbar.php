@@ -26,20 +26,20 @@
                 </li>
             </ul>
         </div>
-        <div class="profile_info">
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <hr class="profile_info">
+            <h5><strong><?php echo $_SESSION['user']['username']; ?></strong></h5>
             <img src="img/blank.jpg">
-
             <div>
                 <?php if (isset($_SESSION['user'])) : ?>
-                    <strong><?php echo $_SESSION['user']['username']; ?></strong>
                     <small>
-                        <i style="color: #888;">(<?php echo ucfirst($_SESSION['user']['user_type']); ?>)</i>
-                        <br>
-                        <a href="index.php?logout='1'">Logout</a>
+                        <i style="color: greenyellow;">(<?php echo ucfirst($_SESSION['user']['user_type']); ?>)</i>
+                        <a name="logout" href="resources/templates/front/logout.php?logout=1" style="color: red;">Logout</a>
                     </small>
                 <?php endif ?>
             </div>
         </div>
+    </div>
     </div>
     </div>
 </nav>

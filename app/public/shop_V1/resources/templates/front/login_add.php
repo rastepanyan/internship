@@ -1,5 +1,16 @@
 <form class="form-group" action="/shop_V1/login_complete.php" method="post" enctype="multipart/form-data">
-    <?php echo display_error($errors); ?>
+    <div class="content">
+        <?php if (isset($_SESSION['success'])) : ?>
+            <div class="error success">
+                <h3>
+                    <?php
+                    echo $_SESSION['success'];
+                    unset($_SESSION['success']);
+                    ?>
+                </h3>
+            </div>
+        <?php endif ?>
+    </div>
     <div class="card-body text-center">
         <div class="col-md-6 mb-2">
             <div class="md-form">

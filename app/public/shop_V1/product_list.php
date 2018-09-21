@@ -1,5 +1,7 @@
-<!-- connect to mysql server -->
-<?php require_once("./resources/connect.php"); ?>
+<?php
+session_start();
+require_once("./resources/connect.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,13 +32,14 @@
                     <div class="card-header">
                         <h5><strong>Products</strong></h5>
                     </div>
-                <?php get_products($conn); ?>
+                    <?php get_products($conn); ?>
+                </div>
             </div>
         </div>
     </div>
-    </div>
-    <!-- FOOTER -->
-    <?php include(FRONT . DS . "footer.php") ?>
+</div>
+<!-- FOOTER -->
+<?php include(FRONT . DS . "footer.php") ?>
 </div>
 </body>
 </html>
