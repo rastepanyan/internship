@@ -1,6 +1,7 @@
 <!-- connect to mysql server -->
-<?php require_once("../resources/connect.php"); ?>
 <?php
+require_once("../resources/connect.php");
+
 if (!is_admin()) {
     $_SESSION['msg'] = "You must log in first";
     header('location: ../login.php');

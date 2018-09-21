@@ -88,4 +88,3 @@
         <button type="submit" class="btn btn-primary" name="register_btn">Register</button>
     </div>
 </form>
-

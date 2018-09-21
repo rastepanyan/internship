@@ -28,7 +28,8 @@ function display_error($errors) {
 function redirect($location)
 {
     sleep(0);
-    return header("Location: $location");
+    return header("Location: $location", true,  301);
+    exit;
 }
 
 //set message
