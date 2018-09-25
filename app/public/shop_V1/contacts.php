@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once("./resources/connect.php");
+require_once("resources/connect.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,7 +10,7 @@ require_once("./resources/connect.php");
 </head>
 <body>
 <!-- NAVBAR -->
-<?php include(FRONT . DS . "navbar.php") ?>
+<?php include(FRONT . DS . "nav_usr.php") ?>
 <div class="container">
     <div class="jumbotron">
         <div class="container-fluid text-center">
@@ -19,8 +19,7 @@ require_once("./resources/connect.php");
         </div>
         <div class="row">
             <div class="col-lg-3">
-                <!-- GROUP SHORTCUTS -->
-                <?php include(FRONT . DS . "group_shortcut.php") ?>
+                <h3><strong>Send message!</strong></h3>
             </div>
             <!-- CONTACTS -->
             <div class="col-lg-9">

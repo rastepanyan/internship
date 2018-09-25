@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once("./resources/connect.php");
+require_once("resources/connect.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,7 +10,7 @@ require_once("./resources/connect.php");
 </head>
 <body>
 <!-- NAVBAR -->
-<?php include(FRONT . DS . "navbar.php") ?>
+<?php include(FRONT . DS . "nav_adm.php") ?>
 <div class="container">
     <div class="jumbotron">
         <div class="container-fluid text-center">
@@ -29,10 +29,10 @@ require_once("./resources/connect.php");
                 <div class="row w-100 d-block">
                     <div class="col">
                         <div class="float-left">
-                            <a href="./checkout.php" class="btn btn-primary btn-block">Checkout</a>
+                            <a href="../checkout.php" class="btn btn-primary btn-block">Checkout</a>
                         </div>
                         <div class="float-right">
-                            <a href="./order_list.php" class="btn btn-primary btn-block">Back</a>
+                            <a href="order_list.php" class="btn btn-primary btn-block">Back</a>
                         </div>
                     </div>
                 </div>

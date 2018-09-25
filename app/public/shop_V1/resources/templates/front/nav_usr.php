@@ -19,9 +19,6 @@
                     <a class="nav-link" href="login.php">Login</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="cart.php">Cart</a>
-                </li>
-                <li class="nav-item active">
                     <a class="nav-link" href="contacts.php">Contacts</a>
                 </li>
             </ul>
@@ -34,7 +31,7 @@
                 <?php if (isset($_SESSION['user'])) : ?>
                     <small>
                         <i style="color: greenyellow;">(<?php echo ucfirst($_SESSION['user']['user_type']); ?>)</i>
-                        <a name="logout" href="resources/templates/front/logout.php?logout=1" style="color: red;">Logout</a>
+                        <a name="logout" href="resources/logout.php?logout=1" style="color: red;">Logout</a>
                     </small>
                 <?php endif ?>
             </div>

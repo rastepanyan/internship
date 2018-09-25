@@ -1,6 +1,8 @@
 <?php
 session_start();
-require_once("./resources/connect.php");
+require_once("resources/connect.php");
+
+if (!is_admin()) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,7 +12,47 @@ require_once("./resources/connect.php");
 </head>
 <body>
 <!-- NAVBAR -->
-<?php include(FRONT . DS . "navbar.php") ?>
+<?php include(FRONT . DS . "nav_adm.php") ?>
+<div class="container">
+    <div class="jumbotron">
+        <div class="container-fluid text-center">
+            <h1>Online Shop</h1>
+            <p>Quality, Price and Assortment</p>
+        </div>
+        <div class="row">
+            <div class="col-lg-3">
+                <!-- GROUP SHORTCUTS -->
+                <?php include(FRONT . DS . "group_shortcut.php") ?>
+            </div>
+            <!-- PRODUCT LIST -->
+            <div class="col-lg-9">
+                <div class="card card-outline-secondary">
+                    <div class="card-header">
+                        <h5><strong>Products</strong></h5>
+                    </div>
+                    <?php get_products($conn); ?>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- FOOTER -->
+<?php include(FRONT . DS . "footer.php") ?>
+</div>
+</body>
+</html>
+<?php
+} else {
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- HEADER -->
+    <?php include(FRONT . DS . "header.php") ?>
+</head>
+<body>
+<!-- NAVBAR -->
+<?php include(FRONT . DS . "nav_adm.php") ?>
 <div class="container">
     <div class="jumbotron">
         <div class="container-fluid text-center">
@@ -43,3 +85,6 @@ require_once("./resources/connect.php");
 </div>
 </body>
 </html>
+<?php
+}
+?>

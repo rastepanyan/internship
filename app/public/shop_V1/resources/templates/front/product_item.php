@@ -27,10 +27,21 @@
                     <a href="./cart.php" class="btn btn-primary btn-block">Add to Cart</a>
                     <a href="./product_list.php" class="btn btn-primary btn-block">Cancel</a>
                 </div>
+                <?php
+                if(is_admin()) {
+                ?>
                 <div class="float-right">
                     <a href="#" class="btn btn-info btn-block">Edit</a>
                     <a href="#" class="btn btn-danger btn-block">Delete</a>
                 </div>
+                    <?php
+                } else {
+                ?>
+                <div class="float-right">
+                </div>
+                    <?php
+                }
+                ?>
             </div>
         </div>
     </div>

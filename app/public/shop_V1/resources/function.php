@@ -1,11 +1,11 @@
 <?php
 
-/*/check connection
+/*check connection
 if (!$conn->connect_errno) {
 
     echo "Connection established";
-}
-*/
+} */
+
 
 //prevent MYSQL injection
 function escape_string($conn, $val)
@@ -13,12 +13,13 @@ function escape_string($conn, $val)
     return mysqli_real_escape_string($conn, trim($val));
 }
 
-function display_error($errors) {
+function display_error($errors)
+{
 
-    if (is_array($errors) > 0){
+    if (is_array($errors) > 0) {
         echo '<div class="error">';
-        foreach ($errors as $error){
-            echo $error .'<br>';
+        foreach ($errors as $error) {
+            echo $error . '<br>';
         }
         echo '</div>';
     }
@@ -65,7 +66,7 @@ function get_products($conn)
             echo "<div class='row'>";
         }
 
-        include("./resources/templates/front/products_all.php");
+        include("resources/templates/front/products_all.php");
         $counter++;
 
         if ($counter % 3 == 0) {
@@ -81,7 +82,7 @@ function show_product($conn, $id)
     $result = $conn->query($sql);
 
     while ($row = $result->fetch_assoc()) {
-        include_once("./resources/templates/front/product_item.php");
+        include_once("resources/templates/front/product_item.php");
     }
 }
 
@@ -94,7 +95,24 @@ function get_orders($conn)
     $result = $conn->query($sql);
 
     while ($row = $result->fetch_assoc()) {
-        include("./resources/templates/front/orders_all.php");
+        include_once("resources/templates/front/orders_all.php");
+    }
+}
+
+//get single order
+function get_single_order($conn, $user_id)
+{
+    $sql = "SELECT orders.order_id, users.user_id, CONCAT(users.first_name, \" \", users.last_name) AS `names`, order_date, amount
+    FROM users LEFT JOIN orders USING(user_id)
+    WHERE users.user_id = '" . $user_id . "'";
+    $result = $conn->query($sql);
+
+    if (mysqli_num_rows($result) == 1) {
+
+        while ($row = $result->fetch_array()) {
+            include("resources/templates/front/orders_all.php");
+
+        }
     }
 }
 
@@ -108,7 +126,7 @@ function show_order($conn, $id)
     $result = $conn->query($sql);
 
     while ($row = $result->fetch_assoc()) {
-        include_once("./resources/templates/front/order_item.php");
+        include_once("resources/templates/front/order_item.php");
     }
 }
 
@@ -169,19 +187,19 @@ function login_user($conn, $errors, $username, $password)
         if ($logged_in_user['user_type'] == 'admin') {
 
             $_SESSION['user'] = $logged_in_user;
-            $_SESSION['success']  = "You are now logged in";
+            $_SESSION['success'] = "You are now logged in";
             //set_message("Welcome {$username}!");
-            redirect("/shop_V1/admin/home.php");
+            redirect("../index.php");
 
         } else {
             $_SESSION['user'] = $logged_in_user;
-            $_SESSION['success']  = "You are now logged in";
-            //set_message("Welcome {$username}!");
-            redirect("http://app.internship/shop_V1/index.php");
+            $_SESSION['success'] = "You are now logged in";
+            set_message("Welcome {$username}!");
+            redirect("../index.php");
         }
     } else {
         set_message("Username or Password are wrong!");
-        redirect("http://app.internship/shop_V1/index.php");
+        redirect("../index.php");
     }
 }
 
@@ -189,24 +207,25 @@ function is_user()
 {
     if (isset($_SESSION['user'])) {
         return true;
-    }else{
+    } else {
         return false;
     }
 }
 
 function is_admin()
 {
-    if (isset($_SESSION['user'])) {
+    if (isset($_SESSION['user']) && $_SESSION['user']['user_type'] == 'admin' ) {
         return true;
-    }else{
+    } else {
         return false;
     }
 }
 
-function logout() {
-        session_destroy();
-        unset($_SESSION['user']);
-        redirect("../../../index.php");
+function logout()
+{
+    session_destroy();
+    unset($_SESSION['user']);
+    redirect("../index.php");
 }
 
 //register user
@@ -251,12 +270,14 @@ function register($conn, $errors, $first_name, $last_name, $address, $post_code,
 					  VALUES('$first_name', '$last_name', '$address', '$post_code', '$city', '$country_code', '$user_type', '$username', '$password')";
 
             $conn->query($sql);
-            redirect("home.php");
+            redirect("./admin/index.php");
+
         } else {
             $sql = "INSERT INTO users (first_name, last_name, address, post_code, city, country_code, user_type, username, password)
 					  VALUES('$first_name', '$last_name', '$address', '$post_code', '$city', '$country_code', 'user', '$username', '$password')";
+
             $conn->query($sql);
-            redirect("home.php");
+            redirect("../index.php");
         }
     }
 }
