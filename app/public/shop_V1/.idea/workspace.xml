@@ -1,18 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b0492e6d-6958-4b8d-b5ba-73a3e5d97345" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/checkout.php" beforeDir="false" afterPath="$PROJECT_DIR$/checkout.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/function.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/function.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/login_complete.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/login_complete.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/registration_complete.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/registration_complete.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/send_data.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/send_data.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/send_message.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/send_message.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/templates/front/login_add.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/templates/front/login_add.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/templates/front/products_all.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/templates/front/products_all.php" afterDir="false" />
-    </list>
+    <list default="true" id="b0492e6d-6958-4b8d-b5ba-73a3e5d97345" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,8 +55,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/function.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1035">
-              <caret line="15" column="9" lean-forward="true" selection-start-line="15" selection-start-column="9" selection-end-line="15" selection-end-column="24" />
+            <state relative-caret-position="-60">
+              <caret line="116" column="54" lean-forward="true" selection-start-line="116" selection-start-column="54" selection-end-line="116" selection-end-column="54" />
               <folding>
                 <element signature="e#7#95#0#PHP" expanded="true" />
               </folding>
@@ -260,12 +249,12 @@
       <workItem from="1537425241751" duration="16378000" />
       <workItem from="1537512056160" duration="17165000" />
       <workItem from="1537856625394" duration="25707000" />
-      <workItem from="1537943478795" duration="12031000" />
+      <workItem from="1537943478795" duration="12051000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="207016000" />
+    <option name="totallyTimeSpent" value="207036000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="0" width="1602" height="876" extended-state="6" />
@@ -566,8 +555,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/function.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1035">
-          <caret line="15" column="9" lean-forward="true" selection-start-line="15" selection-start-column="9" selection-end-line="15" selection-end-column="24" />
+        <state relative-caret-position="-60">
+          <caret line="116" column="54" lean-forward="true" selection-start-line="116" selection-start-column="54" selection-end-line="116" selection-end-column="54" />
           <folding>
             <element signature="e#7#95#0#PHP" expanded="true" />
           </folding>
