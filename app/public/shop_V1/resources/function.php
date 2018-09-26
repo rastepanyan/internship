@@ -13,8 +13,9 @@ function escape_string($conn, $val)
     return mysqli_real_escape_string($conn, trim($val));
 }
 
-function display_error($errors)
+function display_error()
 {
+    $errors = array();
 
     if (is_array($errors) > 0) {
         echo '<div class="error">';
@@ -31,27 +32,6 @@ function redirect($location)
     sleep(0);
     header("Location: $location");
     exit;
-}
-
-//set message
-function set_message($msg)
-{
-
-    if (!empty($msg)) {
-        $_SESSION['message'] = $msg;
-    } else {
-        $msg = "";
-    }
-}
-
-//display message
-function display_message()
-{
-    if (isset($_SESSION['message'])) {
-        echo $_SESSION['message'];
-        unset($_SESSION['message']);
-    }
-
 }
 
 //get products
@@ -166,13 +146,13 @@ function add_to_cart()
     array_push($_SESSION['title'], $details[0]);
 }
 
-//login user
+//login
 function login_user($conn, $errors, $username, $password)
 {
-    if (empty($username)) {
+    if (empty($_POST['username'])) {
         array_push($errors, "User name is required");
     }
-    if (empty($password)) {
+    if (empty($_POST['password'])) {
         array_push($errors, "Password is required");
     }
 
@@ -187,22 +167,21 @@ function login_user($conn, $errors, $username, $password)
         if ($logged_in_user['user_type'] == 'admin') {
 
             $_SESSION['user'] = $logged_in_user;
-            $_SESSION['success'] = "You are now logged in";
-            //set_message("Welcome {$username}!");
+            $_SESSION['success'] = "Hello, Admin!";
             redirect("../index.php");
 
         } else {
             $_SESSION['user'] = $logged_in_user;
-            $_SESSION['success'] = "You are now logged in";
-            set_message("Welcome {$username}!");
+            $_SESSION['success'] = "You are now logged in!";
             redirect("../index.php");
         }
     } else {
-        set_message("Username or Password are wrong!");
-        redirect("../index.php");
+        array_push($errors, "Wrong Username or Password!");
+        redirect("../login.php");
     }
 }
 
+//user check
 function is_user()
 {
     if (isset($_SESSION['user'])) {
@@ -212,15 +191,17 @@ function is_user()
     }
 }
 
+//admin check
 function is_admin()
 {
-    if (isset($_SESSION['user']) && $_SESSION['user']['user_type'] == 'admin' ) {
+    if (isset($_SESSION['user']) && $_SESSION['user']['user_type'] == 'admin') {
         return true;
     } else {
         return false;
     }
 }
 
+//logout
 function logout()
 {
     session_destroy();
@@ -232,28 +213,28 @@ function logout()
 function register($conn, $errors, $first_name, $last_name, $address, $post_code, $city, $country_code, $username, $password_1, $password_2)
 {
 
-    if (empty($first_name)) {
+    if (empty($_POST['first_name'])) {
         array_push($errors, "First name is required");
     }
-    if (empty($last_name)) {
+    if (empty($_POST['last_name'])) {
         array_push($errors, "Last name is required");
     }
-    if (empty($address)) {
+    if (empty($_POST['address'])) {
         array_push($errors, "Address is required");
     }
-    if (empty($post_code)) {
+    if (empty($_POST['post_code'])) {
         array_push($errors, "Post code is required");
     }
-    if (empty($city)) {
+    if (empty($_POST['city'])) {
         array_push($errors, "City is required");
     }
-    if (empty($country_code)) {
+    if (empty($_POST['country_code'])) {
         array_push($errors, "Country code is required");
     }
-    if (empty($username)) {
+    if (empty($_POST['username'])) {
         array_push($errors, "User name is required");
     }
-    if (empty($password_1)) {
+    if (empty($_POST['password_1'])) {
         array_push($errors, "Password is required");
     }
     if ($password_1 != $password_2) {
@@ -282,9 +263,13 @@ function register($conn, $errors, $first_name, $last_name, $address, $post_code,
     }
 }
 
-function send_message()
+//send message
+function send_message($result)
 {
-    if (isset($_POST['send_btn'])) {
-        echo "It's working.";
+    if (!$result) {
+        echo "Error!!!";
+
+    } else {
+        echo "Sent!";
     }
 }
