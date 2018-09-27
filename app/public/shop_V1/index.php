@@ -25,7 +25,7 @@ if (is_admin()) {
                     <?php include(FRONT . DS . "group_shortcut.php") ?>
                     <br>
                     <?php if (isset($_SESSION['success'])) : ?>
-                        <div class="error success" >
+                        <div class="error success text-center">
                             <h3>
                                 <?php
                                 echo $_SESSION['success'];

@@ -1,12 +1,5 @@
 <?php
 
-/*check connection
-if (!$conn->connect_errno) {
-
-    echo "Connection established";
-} */
-
-
 //prevent MYSQL injection
 function escape_string($conn, $val)
 {
@@ -62,7 +55,20 @@ function show_product($conn, $id)
     $result = $conn->query($sql);
 
     while ($row = $result->fetch_assoc()) {
-        include_once("resources/templates/front/product_item.php");
+        include("resources/templates/front/product_item.php");
+    }
+}
+
+//delete product
+function delete_product($conn, $id)
+{
+
+    $sql = "DELETE FROM products WHERE product_id = " . $id;
+
+    if ($conn->query($sql) === true) {
+        redirect("../product_list.php");
+    } else {
+        echo "ERROR: Record not deleted! $sql. " . $conn->error;
     }
 }
 
@@ -75,7 +81,7 @@ function get_orders($conn)
     $result = $conn->query($sql);
 
     while ($row = $result->fetch_assoc()) {
-        include_once("resources/templates/front/orders_all.php");
+        include("resources/templates/front/orders_all.php");
     }
 }
 
@@ -106,7 +112,7 @@ function show_order($conn, $id)
     $result = $conn->query($sql);
 
     while ($row = $result->fetch_assoc()) {
-        include_once("resources/templates/front/order_item.php");
+        include("resources/templates/front/order_item.php");
     }
 }
 
@@ -124,26 +130,47 @@ function add_product($conn)
     if ($conn->query($sql) === true) {
         redirect("../product_list.php");
     } else {
-        echo "ERROR: Record not added $sql. " . $conn->error;
+        echo "ERROR: Record not added! $sql. " . $conn->error;
     }
 }
 
 //add to cart
 function add_to_cart()
 {
-    if (empty($_SESSION['title'])) {
-        $_SESSION['title'] = array();
-        $_SESSION['price'] = array();
-        $_SESSION['vat'] = array();
-        $_SESSION['quantity'] = array();
-        $_SESSION['subtotal'] = array();
+    if (isset($_SESSION["cart"])) {
+        $id = array_column($_SESSION["cart"], "product_id");
+        if (!in_array($_GET["id"], $id)) {
+            $count = count($_SESSION["cart"]);
+            $row = array(
+                'position' => $_GET["id"],
+                'title' => $_POST["hidden_title"],
+                'price' => $_POST["hidden_price"],
+                'quantity' => $_POST["quantity"]
+            );
+            $_SESSION["cart"][$count] = $row;
+        } else {
+            echo "Item Already Added";
+        }
+    } else {
+        $row = array(
+            'position' => $_GET["id"],
+            'title' => $_POST["hidden_title"],
+            'price' => $_POST["hidden_price"],
+            'quantity' => $_POST["quantity"]
+        );
+        $_SESSION["cart"][0] = $row;
+        redirect("../cart.php");
     }
+}
 
-    array_push($_SESSION['title']);
-    array_push($_SESSION['quantity']);
-
-    $details = explode("|", S_POST[item]);
-    array_push($_SESSION['title'], $details[0]);
+if (isset($_GET["action"])) {
+    if ($_GET["action"] == "delete") {
+        foreach ($_SESSION["cart"] as $keys => $values) {
+            if ($values["product_id"] == $_GET["id"]) {
+                unset($_SESSION["cart"][$keys]);
+            }
+        }
+    }
 }
 
 //login

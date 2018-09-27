@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once("../resources/connect.php");
+require_once("connect.php");
 
 if (isset($_POST['register_btn'])) {
 

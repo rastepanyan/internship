@@ -29,7 +29,7 @@ require_once("resources/connect.php");
                 <div class="row w-100 d-block">
                     <div class="col">
                         <div class="float-left">
-                            <a href="../checkout.php" class="btn btn-primary btn-block">Checkout</a>
+                            <a href="checkout.php" class="btn btn-primary btn-block">Checkout</a>
                         </div>
                         <div class="float-right">
                             <a href="order_list.php" class="btn btn-primary btn-block">Back</a>
