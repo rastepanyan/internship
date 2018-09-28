@@ -1,4 +1,4 @@
-<form class="form-group" action="/shop_V1/resources/delete_add_product.php" method="post" enctype="multipart/form-data">
+<form class="form-group" action="/shop_V1/resources/delete_add_remove.php" method="post" enctype="multipart/form-data">
     <input type="hidden" name="product_id" value="<?php echo $row['product_id']; ?>"/>
     <div class="card">
         <img class="card-img-top img-fluid" src="img/<?php echo $row['images']; ?>" alt="">
@@ -19,8 +19,11 @@
         <div class="card-body">
             <p>Quantity:</p>
             <small class="text-muted">
-                <input type="number" min="1" class="input-sm text-center" value="1">
+                <input name="quantity" type="number" min="1" class="input-sm text-center" value="1">
             </small>
+            <input type="hidden" name="hidden_title" value="<?php echo $row['title']; ?>" />
+            <input type="hidden" name="hidden_price" value="<?php echo $row['price']; ?>" />
+
             <hr>
             <div class="row w-100 d-block">
                 <div class="col">

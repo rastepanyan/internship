@@ -62,7 +62,6 @@ function show_product($conn, $id)
 //delete product
 function delete_product($conn, $id)
 {
-
     $sql = "DELETE FROM products WHERE product_id = " . $id;
 
     if ($conn->query($sql) === true) {
@@ -137,40 +136,46 @@ function add_product($conn)
 //add to cart
 function add_to_cart()
 {
-    if (isset($_SESSION["cart"])) {
-        $id = array_column($_SESSION["cart"], "product_id");
-        if (!in_array($_GET["id"], $id)) {
-            $count = count($_SESSION["cart"]);
-            $row = array(
-                'position' => $_GET["id"],
-                'title' => $_POST["hidden_title"],
-                'price' => $_POST["hidden_price"],
-                'quantity' => $_POST["quantity"]
+    if (isset($_SESSION['cart'])) {
+        $id = array_column($_SESSION['cart'], 'product_id');
+        if (!in_array($_GET['id'], $id)) {
+            $count = count($_SESSION['cart']);
+            $item_array = array(
+                'position' => $_GET['id'],
+                //'position' => sizeof($_SESSION['cart']) + 1,
+                'title' => $_POST['hidden_title'],
+                'price' => $_POST['hidden_price'],
+                'quantity' => $_POST['quantity']
             );
-            $_SESSION["cart"][$count] = $row;
+            $_SESSION['cart'][$count] = $item_array;
         } else {
             echo "Item Already Added";
         }
     } else {
-        $row = array(
-            'position' => $_GET["id"],
-            'title' => $_POST["hidden_title"],
-            'price' => $_POST["hidden_price"],
-            'quantity' => $_POST["quantity"]
+        $item_array = array(
+            'position' => $_GET['id'],
+            'title' => $_POST['hidden_title'],
+            'price' => $_POST['hidden_price'],
+            'quantity' => $_POST['quantity']
         );
-        $_SESSION["cart"][0] = $row;
-        redirect("../cart.php");
+        $_SESSION['cart'][0] = $item_array;
     }
+    redirect("../cart.php");
 }
 
-if (isset($_GET["action"])) {
-    if ($_GET["action"] == "delete") {
-        foreach ($_SESSION["cart"] as $keys => $values) {
-            if ($values["product_id"] == $_GET["id"]) {
-                unset($_SESSION["cart"][$keys]);
+//remove from cart
+function remove_from_cart()
+{
+    if (isset($_GET['action'])) {
+        if ($_GET['action'] == 'delete') {
+            foreach ($_SESSION['cart'] as $keys => $values) {
+                if ($values['product_id'] == $_GET['id']) {
+                    unset($_SESSION['cart'][$keys]);
+                }
             }
         }
     }
+    redirect("../cart.php");
 }
 
 //login
