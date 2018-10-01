@@ -19,9 +19,6 @@
                     <a class="nav-link" href="login.php">Login</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="cart.php">Cart</a>
-                </li>
-                <li class="nav-item active">
                     <a class="nav-link" href="contacts.php">Contacts</a>
                 </li>
             </ul>

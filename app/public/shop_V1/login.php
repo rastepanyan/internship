@@ -10,7 +10,7 @@ require_once("resources/connect.php");
 </head>
 <body>
 <!-- NAVBAR -->
-<?php include(FRONT . DS . "nav_usr.php") ?>
+<?php include(FRONT . DS . "nav_gst.php") ?>
 <div class="container">
     <div class="jumbotron">
         <div class="container-fluid text-center">
@@ -19,7 +19,7 @@ require_once("resources/connect.php");
         </div>
         <div class="row">
             <div class="col-lg-3">
-                <h3><strong>Please, log in!</strong></h3>
+                <img class="card-img-top img-fluid" src="img/login.jpg" alt="Login">
             </div>
             <!-- LOGIN -->
             <div class="col-lg-9">

@@ -10,7 +10,7 @@ require_once("resources/connect.php");
 </head>
 <body>
 <!-- NAVBAR -->
-<?php include(FRONT . DS . "nav_adm.php") ?>
+<?php include(FRONT . DS . "nav_usr.php") ?>
 <div class="container">
     <div class="jumbotron">
         <div class="container-fluid text-center">

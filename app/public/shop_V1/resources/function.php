@@ -138,22 +138,23 @@ function add_to_cart()
 {
     if (isset($_SESSION['cart'])) {
         $id = array_column($_SESSION['cart'], 'product_id');
-        if (!in_array($_GET['id'], $id)) {
+        if (!in_array($_POST['product_id'], $id)) {
             $count = count($_SESSION['cart']);
             $item_array = array(
-                'position' => $_GET['id'],
-                //'position' => sizeof($_SESSION['cart']) + 1,
+                'product_id' => $_POST['product_id'],
+                'position' => sizeof($_SESSION['cart']) + 1,
                 'title' => $_POST['hidden_title'],
                 'price' => $_POST['hidden_price'],
                 'quantity' => $_POST['quantity']
             );
             $_SESSION['cart'][$count] = $item_array;
         } else {
-            echo "Item Already Added";
+            echo array_push($errors, "Already added!");
         }
     } else {
         $item_array = array(
-            'position' => $_GET['id'],
+            'product_id' => $_POST['product_id'],
+            'position' => 1,
             'title' => $_POST['hidden_title'],
             'price' => $_POST['hidden_price'],
             'quantity' => $_POST['quantity']
@@ -164,17 +165,13 @@ function add_to_cart()
 }
 
 //remove from cart
-function remove_from_cart()
+function remove_from_cart($id)
 {
-    if (isset($_GET['action'])) {
-        if ($_GET['action'] == 'delete') {
-            foreach ($_SESSION['cart'] as $keys => $values) {
-                if ($values['product_id'] == $_GET['id']) {
-                    unset($_SESSION['cart'][$keys]);
-                }
+        foreach ($_SESSION['cart'] as $keys => $values) {
+            if ($values['product_id'] == $id) {
+                unset($_SESSION['cart'][$keys]);
             }
         }
-    }
     redirect("../cart.php");
 }
 

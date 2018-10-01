@@ -12,7 +12,7 @@ if (!is_admin()) {
     </head>
     <body>
     <!-- NAVBAR -->
-    <?php include(FRONT . DS . "nav_adm.php") ?>
+    <?php include(FRONT . DS . "nav_usr.php") ?>
     <div class="container">
         <div class="jumbotron">
             <div class="container-fluid text-center">
@@ -36,7 +36,7 @@ if (!is_admin()) {
                     <div class="row w-100 d-block">
                         <div class="col">
                             <div class="btn-toolbar float-right">
-                                <a href="../admin/index.php" class="btn btn-secondary btn-block">Back</a>
+                                <a href="index.php" class="btn btn-secondary btn-block">Back</a>
                             </div>
                         </div>
                     </div>
