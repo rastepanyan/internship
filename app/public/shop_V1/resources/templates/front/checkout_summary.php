@@ -136,7 +136,7 @@
             <div class="col">
                 <div class="btn-toolbar float-left">
                     <a class="btn btn-primary btn-lg btn-block" href="#">Confirm</a>
-                    <a class="btn btn-secondary btn-lg btn-block" href="product_list.php">Back</a>
+                    <a class="btn btn-secondary btn-lg btn-block" href="cart.php">Back</a>
                 </div>
             </div>
         </div>

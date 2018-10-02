@@ -4,7 +4,7 @@
             <div class="col-md-5 mb-2">
                 <div class="md-form">
                     <label for="your_name">Your Name:</label>
-                    <input id="your_name" type="text" name="your_name" class="form-control" required>
+                    <input id="your_name" type="text" name="your_name" class="form-control">
                 </div>
             </div>
         </div>
@@ -12,7 +12,7 @@
             <div class="col-md-4 mb-2">
                 <div class="md-form">
                     <label for="email">Email:</label>
-                    <input id="email" type="text" name="email" class="form-control" required>
+                    <input id="email" type="text" name="email" class="form-control">
                 </div>
             </div>
         </div>
@@ -22,12 +22,14 @@
                 <textarea id="your_message" name="your_message" class="form-control"></textarea>
             </div>
         </div>
-    </div>
-    <div class="card-body">
-        <label class="col-md-4 control-label"></label>
-        <div class="col-md-4">
-            <button type="submit" name="send_btn" class="btn btn-danger btn-md">Send</button>
-            <a class="btn btn-info btn-md" href="./index.php">Back</a>
+        <h2><strong><?php display_error(); ?></strong></h2>
+        <div class="card-body">
+            <hr>
+            <label class="col-md-4 control-label"></label>
+            <div class="col-md-4">
+                <button type="submit" name="send_btn" class="btn btn-danger btn-md">Send</button>
+                <a class="btn btn-info btn-md" href="./index.php">Back</a>
+            </div>
         </div>
     </div>
 </form>

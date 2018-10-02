@@ -4,8 +4,8 @@ require_once("connect.php");
 
 if (isset($_POST['login_btn'])) {
 
-    $username = escape_string($conn, $_POST['username']);
-    $password = escape_string($conn, md5($_POST['password']));
+    $username = $conn->escape_string($_POST['username']);
+    $password = $conn->escape_string(md5($_POST['password']));
 
     login_user($conn, array(), $username, $password);
 }

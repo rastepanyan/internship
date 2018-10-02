@@ -6,10 +6,10 @@ function escape_string($conn, $val)
     return mysqli_real_escape_string($conn, trim($val));
 }
 
+//display errors
 function display_error()
 {
     $errors = array();
-
     if (is_array($errors) > 0) {
         echo '<div class="error">';
         foreach ($errors as $error) {
@@ -67,7 +67,7 @@ function delete_product($conn, $id)
     if ($conn->query($sql) === true) {
         redirect("../product_list.php");
     } else {
-        echo "ERROR: Record not deleted! $sql. " . $conn->error;
+        array_push($errors, "ERROR: Product not deleted!");
     }
 }
 
@@ -167,11 +167,11 @@ function add_to_cart()
 //remove from cart
 function remove_from_cart($id)
 {
-        foreach ($_SESSION['cart'] as $keys => $values) {
-            if ($values['product_id'] == $id) {
-                unset($_SESSION['cart'][$keys]);
-            }
+    foreach ($_SESSION['cart'] as $keys => $values) {
+        if ($values['product_id'] == $id) {
+            unset($_SESSION['cart'][$keys]);
         }
+    }
     redirect("../cart.php");
 }
 
@@ -275,7 +275,7 @@ function register($conn, $errors, $first_name, $last_name, $address, $post_code,
         $password = md5($password_1);
 
         if (isset($_POST['user_type'])) {
-            $user_type = escape_string($_POST['user_type']);
+            $user_type = $conn->escape_string($_POST['user_type']);
             $sql = "INSERT INTO users (first_name, last_name, address, post_code, city, country_code, user_type, username, password) 
 					  VALUES('$first_name', '$last_name', '$address', '$post_code', '$city', '$country_code', '$user_type', '$username', '$password')";
 
@@ -293,12 +293,43 @@ function register($conn, $errors, $first_name, $last_name, $address, $post_code,
 }
 
 //send message
-function send_message($result)
+function send_message($conn, $from_name, $email, $the_message)
 {
-    if (!$result) {
-        echo "Error!!!";
+    $errors = array();
+    if (empty($_POST['from_name'])) {
+        array_push($errors, "Your name is required");
+    }
+    if (empty($_POST['email'])) {
+        array_push($errors, "Your email is required");
+    }
+    if (empty($_POST['the_message'])) {
+        array_push($errors, "Please, write your message here");
+    }
 
-    } else {
-        echo "Sent!";
+    $sql = "INSERT INTO messages (from_name, email, the_message) VALUES('$from_name', '$email', '$the_message')";
+
+    $conn->query($sql);
+    redirect("../contacts.php");
+}
+
+//receive message
+function receive_message($conn)
+{
+    $sql = "SELECT * FROM messages";
+    $result = $conn->query($sql);
+
+    while ($row = $result->fetch_assoc()) {
+        include("resources/templates/front/message_view.php");
+    }
+}
+
+//delete message
+function delete_message($conn, $id)
+{
+    $sql = "DELETE FROM messages WHERE message_id = " . $id;
+    $result = $conn->query($sql);
+
+    while ($row = $result->fetch_assoc()) {
+        redirect("../messages.php");
     }
 }
