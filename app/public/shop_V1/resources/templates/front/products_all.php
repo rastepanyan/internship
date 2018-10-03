@@ -7,7 +7,7 @@
                 <a href="products_single.php?id=<?php echo $row['product_id']; ?>"><?php echo $row['title']; ?></a>
             </h4>
             <h5>&#163;<?php echo $row['price']; ?></h5>
-            <p class="card-text"><?php echo $row['description']; ?></p>
+            <p class="card-text"><?php echo $row['short_description']; ?></p>
         </div>
         <div class="card-footer">
             <small class="text-muted"></small>

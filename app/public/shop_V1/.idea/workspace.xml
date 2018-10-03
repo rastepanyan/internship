@@ -3,14 +3,34 @@
   <component name="ChangeListManager">
     <list default="true" id="b0492e6d-6958-4b8d-b5ba-73a3e5d97345" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/belt_home.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/belt_products.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/blouse_home.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/blouse_product.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/boots_home.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/boots_product.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/dress_home.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/dresses_product.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/hat_home.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/hat_product.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/jacket_home.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/jackets_product.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/necklet_home.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/necklet_product.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/shoes_home.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/shoes_product.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/suit_home.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/suit_product.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/trouser_home.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/trouser_product.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/delete_message.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/delete_message.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/function.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/function.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/login_complete.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/login_complete.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/registration_complete.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/registration_complete.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/send_message.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/send_message.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/templates/front/checkout_summary.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/templates/front/checkout_summary.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/templates/front/add_cart.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/templates/front/add_cart.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/templates/front/contact_add.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/templates/front/contact_add.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/templates/front/login_add.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/templates/front/login_add.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/templates/front/nav_adm.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/templates/front/nav_adm.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/templates/front/message_view.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/templates/front/message_view.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/templates/front/product_item.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/templates/front/product_item.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/templates/front/products_all.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/templates/front/products_all.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -36,7 +56,7 @@
     <session id="-1787191196">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="15" />
+          <entry key="project.closed" value="16" />
           <entry key="project.open.time.10" value="2" />
           <entry key="project.open.time.11" value="2" />
           <entry key="project.open.time.12" value="5" />
@@ -45,31 +65,32 @@
           <entry key="project.open.time.16" value="1" />
           <entry key="project.open.time.3" value="1" />
           <entry key="project.open.time.6" value="1" />
-          <entry key="project.opened" value="17" />
+          <entry key="project.open.time.9" value="1" />
+          <entry key="project.opened" value="18" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="html" value="3" />
-          <entry key="php" value="561" />
+          <entry key="php" value="586" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="HTML" value="3" />
-          <entry key="PHP" value="561" />
+          <entry key="PHP" value="586" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="html" value="61" />
-          <entry key="php" value="26523" />
+          <entry key="php" value="28167" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="HTML" value="72" />
-          <entry key="PHP" value="26471" />
+          <entry key="HTML" value="73" />
+          <entry key="PHP" value="28114" />
           <entry key="SQL" value="41" />
         </counts>
       </usages-collector>
@@ -80,35 +101,35 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/function.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="465">
-              <caret line="326" column="34" selection-start-line="326" selection-start-column="34" selection-end-line="326" selection-end-column="34" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/templates/front/message_view.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="66" selection-start-column="66" selection-end-column="66" />
+            <state relative-caret-position="359">
+              <caret line="331" column="62" selection-start-line="331" selection-start-column="62" selection-end-line="331" selection-end-column="62" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/resources/delete_message.php">
+        <entry file="file://$PROJECT_DIR$/resources/templates/front/message_view.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+            <state relative-caret-position="300">
+              <caret line="20" column="24" lean-forward="true" selection-start-line="20" selection-start-column="24" selection-end-line="20" selection-end-column="24" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/messages.php">
+        <entry file="file://$PROJECT_DIR$/read_message.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="435">
-              <caret line="29" column="47" selection-start-line="29" selection-start-column="47" selection-end-line="29" selection-end-column="47" />
+              <caret line="29" column="37" lean-forward="true" selection-start-line="29" selection-start-column="37" selection-end-line="29" selection-end-column="37" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/templates/front/message_read.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="300">
+              <caret line="20" column="21" selection-start-line="20" selection-start-column="21" selection-end-line="20" selection-end-column="21" />
             </state>
           </provider>
         </entry>
@@ -126,8 +147,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/resources/templates/front/registration_add.php" />
-        <option value="$PROJECT_DIR$/resources/logout.php" />
         <option value="$PROJECT_DIR$/admin/index_adm.php" />
         <option value="$PROJECT_DIR$/admin/contacts.php" />
         <option value="$PROJECT_DIR$/admin/cart.php" />
@@ -147,14 +166,11 @@
         <option value="$PROJECT_DIR$/resources/templates/front/home.php" />
         <option value="$PROJECT_DIR$/resources/send_data.php" />
         <option value="$PROJECT_DIR$/checkout.php" />
-        <option value="$PROJECT_DIR$/resources/templates/front/products_all.php" />
         <option value="$PROJECT_DIR$/resources/connect.php" />
         <option value="$PROJECT_DIR$/products_single.php" />
         <option value="$PROJECT_DIR$/orders_single.php" />
         <option value="$PROJECT_DIR$/resources/delete_product.php" />
         <option value="$PROJECT_DIR$/resources/delete_add_product.php" />
-        <option value="$PROJECT_DIR$/resources/templates/front/product_item.php" />
-        <option value="$PROJECT_DIR$/resources/templates/front/add_cart.php" />
         <option value="$PROJECT_DIR$/resources/templates/front/nav_usr.php" />
         <option value="$PROJECT_DIR$/resources/templates/front/nav_gst.php" />
         <option value="$PROJECT_DIR$/index.php" />
@@ -169,14 +185,19 @@
         <option value="$PROJECT_DIR$/resources/login_complete.php" />
         <option value="$PROJECT_DIR$/resources/registration_complete.php" />
         <option value="$PROJECT_DIR$/resources/templates/front/login_add.php" />
-        <option value="$PROJECT_DIR$/resources/send_message.php" />
         <option value="$PROJECT_DIR$/resources/receive_message.php" />
         <option value="$PROJECT_DIR$/messages.php" />
         <option value="$PROJECT_DIR$/resources/templates/front/nav_adm.php" />
+        <option value="$PROJECT_DIR$/resources/templates/front/add_cart.php" />
+        <option value="$PROJECT_DIR$/resources/send_message.php" />
+        <option value="$PROJECT_DIR$/resources/templates/front/product_item.php" />
+        <option value="$PROJECT_DIR$/resources/templates/front/products_all.php" />
         <option value="$PROJECT_DIR$/resources/templates/front/contact_add.php" />
-        <option value="$PROJECT_DIR$/resources/templates/front/message_view.php" />
-        <option value="$PROJECT_DIR$/resources/function.php" />
         <option value="$PROJECT_DIR$/resources/delete_message.php" />
+        <option value="$PROJECT_DIR$/resources/templates/front/message_view.php" />
+        <option value="$PROJECT_DIR$/read_message.php" />
+        <option value="$PROJECT_DIR$/resources/function.php" />
+        <option value="$PROJECT_DIR$/resources/templates/front/message_read.php" />
       </list>
     </option>
   </component>
@@ -298,18 +319,19 @@
       <workItem from="1538030401267" duration="15412000" />
       <workItem from="1538117658993" duration="20704000" />
       <workItem from="1538375953435" duration="25610000" />
-      <workItem from="1538465503022" duration="19431000" />
+      <workItem from="1538465503022" duration="19509000" />
+      <workItem from="1538547606335" duration="12109000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="288397000" />
+    <option name="totallyTimeSpent" value="300584000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="0" width="1602" height="876" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26962677" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.27348778" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -358,8 +380,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/admin/product_list.php" />
-    <entry file="file://$PROJECT_DIR$/admin/orders_single.php" />
     <entry file="file://$PROJECT_DIR$/admin/products_single.php" />
     <entry file="file://$PROJECT_DIR$/admin/register.php" />
     <entry file="file://$PROJECT_DIR$/admin/resources/logout.php" />
@@ -394,13 +414,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="41" lean-forward="true" selection-start-column="41" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/templates/front/products_all.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
         </state>
       </provider>
     </entry>
@@ -488,24 +501,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/receive_message.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/receive_message.php" />
     <entry file="file://$PROJECT_DIR$/resources/templates/front/nav_adm.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
           <caret line="10" column="58" selection-start-line="10" selection-start-column="58" selection-end-line="10" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/orders_single.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="29" column="37" lean-forward="true" selection-start-line="29" selection-start-column="37" selection-end-line="29" selection-end-column="37" />
         </state>
       </provider>
     </entry>
@@ -519,10 +519,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/products_single.php">
+    <entry file="file://$PROJECT_DIR$/resources/templates/front/add_new.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/delete_add_remove.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="34" column="7" lean-forward="true" selection-start-line="34" selection-start-column="7" selection-end-line="34" selection-end-column="7" />
+        <state relative-caret-position="135">
+          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
         </state>
       </provider>
     </entry>
@@ -533,10 +536,52 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/order_list.php">
+    <entry file="file://$PROJECT_DIR$/resources/templates/front/add_cart.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-255">
-          <caret line="38" column="41" selection-start-line="38" selection-start-column="41" selection-end-line="38" selection-end-column="41" />
+        <state relative-caret-position="449">
+          <caret line="35" column="89" lean-forward="true" selection-start-line="34" selection-start-column="35" selection-end-line="35" selection-end-column="89" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/product_list.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="293">
+          <caret line="67" column="98" selection-start-line="67" selection-start-column="98" selection-end-line="67" selection-end-column="98" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/templates/front/product_item.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="42" selection-start-line="8" selection-start-column="42" selection-end-line="8" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/templates/front/products_all.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="56" selection-start-line="9" selection-start-column="56" selection-end-line="9" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/messages.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="29" column="47" selection-start-line="29" selection-start-column="47" selection-end-line="29" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/send_message.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="54" selection-start-line="11" selection-start-column="54" selection-end-line="11" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/products_single.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="34" column="7" selection-start-line="34" selection-start-column="7" selection-end-line="34" selection-end-column="7" />
         </state>
       </provider>
     </entry>
@@ -544,23 +589,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
           <caret line="28" column="26" selection-start-line="28" selection-start-column="26" selection-end-line="28" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/templates/front/add_new.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/templates/front/add_cart.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="329">
-          <caret line="51" column="20" lean-forward="true" selection-start-line="51" selection-start-column="20" selection-end-line="51" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/templates/front/contact_add.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="26" column="16" selection-start-line="26" selection-start-column="16" selection-end-line="26" selection-end-column="16" />
         </state>
       </provider>
     </entry>
@@ -578,66 +606,66 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/resources/templates/front/contact_add.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="570">
+          <caret line="38" column="53" lean-forward="true" selection-start-line="38" selection-start-column="53" selection-end-line="38" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/resources/templates/front/orders_all.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
+        <state relative-caret-position="195">
+          <caret line="13" column="64" lean-forward="true" selection-start-line="13" selection-start-column="64" selection-end-line="13" selection-end-column="64" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/send_message.php">
+    <entry file="file://$PROJECT_DIR$/order_list.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+        <state relative-caret-position="510">
+          <caret line="34" column="24" lean-forward="true" selection-start-line="34" selection-start-column="24" selection-end-line="34" selection-end-column="24" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/product_list.php">
+    <entry file="file://$PROJECT_DIR$/orders_single.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="269">
-          <caret line="67" column="98" selection-start-line="67" selection-start-column="98" selection-end-line="67" selection-end-column="98" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/templates/front/product_item.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="19" lean-forward="true" selection-start-line="7" selection-start-column="19" selection-end-line="7" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/messages.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="29" column="47" selection-start-line="29" selection-start-column="47" selection-end-line="29" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/function.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="326" column="34" selection-start-line="326" selection-start-column="34" selection-end-line="326" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/delete_add_remove.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/templates/front/message_view.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="66" selection-start-column="66" selection-end-column="66" />
+        <state relative-caret-position="368">
+          <caret line="29" column="37" lean-forward="true" selection-start-line="29" selection-start-column="37" selection-end-line="29" selection-end-column="37" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/delete_message.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
-          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+          <caret line="9" selection-start-line="9" selection-end-line="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/templates/front/message_read.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="20" column="21" selection-start-line="20" selection-start-column="21" selection-end-line="20" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/read_message.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="29" column="37" lean-forward="true" selection-start-line="29" selection-start-column="37" selection-end-line="29" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/function.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="359">
+          <caret line="331" column="62" selection-start-line="331" selection-start-column="62" selection-end-line="331" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/templates/front/message_view.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="20" column="24" lean-forward="true" selection-start-line="20" selection-start-column="24" selection-end-line="20" selection-end-column="24" />
         </state>
       </provider>
     </entry>

@@ -293,7 +293,7 @@ function register($conn, $errors, $first_name, $last_name, $address, $post_code,
 }
 
 //send message
-function send_message($conn, $from_name, $email, $the_message)
+function send_message($conn, $from_name, $email, $subject, $the_message)
 {
     $errors = array();
     if (empty($_POST['from_name'])) {
@@ -302,11 +302,14 @@ function send_message($conn, $from_name, $email, $the_message)
     if (empty($_POST['email'])) {
         array_push($errors, "Your email is required");
     }
+    if (empty($_POST['subject'])) {
+        array_push($errors, "Subject is needed");
+    }
     if (empty($_POST['the_message'])) {
         array_push($errors, "Please, write your message here");
     }
 
-    $sql = "INSERT INTO messages (from_name, email, the_message) VALUES('$from_name', '$email', '$the_message')";
+    $sql = "INSERT INTO messages (from_name, email, subject, the_message) VALUES('$from_name', '$email', '$subject', '$the_message')";
 
     $conn->query($sql);
     redirect("../contacts.php");
@@ -323,13 +326,23 @@ function receive_message($conn)
     }
 }
 
+//view message
+function view_message($conn, $id)
+{
+    $sql = "SELECT * FROM messages WHERE message_id = " . $id;
+    $result = $conn->query($sql);
+
+    while ($row = $result->fetch_assoc()) {
+        include("templates/front/message_read.php");
+    }
+}
+
 //delete message
 function delete_message($conn, $id)
 {
     $sql = "DELETE FROM messages WHERE message_id = " . $id;
-    $result = $conn->query($sql);
 
-    while ($row = $result->fetch_assoc()) {
+    if ($conn->query($sql) === true) {
         redirect("../messages.php");
     }
 }

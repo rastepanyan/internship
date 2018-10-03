@@ -21,8 +21,6 @@
                     $total_amount = 0;
                     foreach ($_SESSION['cart'] as $keys => $values) {
                         ?>
-
-
                         <tbody>
                         <tr>
                             <th scope="row" data-th="Position"><?php echo $values['position']; ?></th>

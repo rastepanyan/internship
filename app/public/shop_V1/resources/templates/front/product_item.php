@@ -6,7 +6,7 @@
             <h4>&#163;<?php echo $row['price']; ?></h4>
             <p class="card-text text-justify">
                 <i>
-                    <?php echo $row['description']; ?>
+                    <?php echo $row['full_description']; ?>
                 </i>
             </p>
         </div>
