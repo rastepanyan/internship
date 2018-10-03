@@ -4,7 +4,7 @@
             <div class="col-md-5 mb-2">
                 <div class="md-form">
                     <label for="your_name"><strong>Your Name:</strong></label>
-                    <input id="your_name" type="text" name="your_name" class="form-control">
+                    <input id="your_name" type="text" name="your_name" class="form-control" required>
                 </div>
             </div>
         </div>
@@ -12,7 +12,7 @@
             <div class="col-md-5 mb-2">
                 <div class="md-form">
                     <label for="email"><strong>Email:</strong></label>
-                    <input id="email" type="text" name="email" class="form-control">
+                    <input id="email" type="text" name="email" class="form-control" required>
                 </div>
             </div>
         </div>
@@ -20,7 +20,7 @@
             <div class="col-md-5 mb-2">
                 <div class="md-form">
                     <label for="subject"><strong>Subject:</strong></label>
-                    <input id="subject" type="text" name="subject" class="form-control">
+                    <input id="subject" type="text" name="subject" class="form-control" required>
                 </div>
             </div>
         </div>

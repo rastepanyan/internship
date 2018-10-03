@@ -1,9 +1,23 @@
 <?php
 
+/*
+ *  HELPER FUNCTIONS
+ */
+
 //prevent MYSQL injection
 function escape_string($conn, $val)
 {
     return mysqli_real_escape_string($conn, trim($val));
+}
+
+//query
+function query($conn, $sql) {
+    return mysqli_query($conn, $sql);
+}
+
+//fetch_assoc
+function fetch_assoc($result) {
+    mysqli_fetch_assoc($result);
 }
 
 //display errors
@@ -26,6 +40,10 @@ function redirect($location)
     header("Location: $location");
     exit;
 }
+
+/*
+ *  END
+ */
 
 //get products
 function get_products($conn)
@@ -94,7 +112,7 @@ function get_single_order($conn, $user_id)
 
     if (mysqli_num_rows($result) == 1) {
 
-        while ($row = $result->fetch_array()) {
+        while ($row = $result->fetch_assoc()) {
             include("resources/templates/front/orders_all.php");
 
         }

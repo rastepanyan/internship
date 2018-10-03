@@ -4,13 +4,13 @@
         <div class="col-md-6 mb-2">
             <div class="md-form">
                 <label for="username"><strong>Username:</strong></label>
-                <input type="text" name="username" class="form-control">
+                <input type="text" name="username" class="form-control" required>
             </div>
         </div>
         <div class="col-md-6 mb-2">
             <div class="md-form">
                 <label for="password"><strong>Password:</strong></label>
-                <input type="password" name="password" class="form-control">
+                <input type="password" name="password" class="form-control" required>
             </div>
         </div>
     </div>

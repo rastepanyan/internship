@@ -8,10 +8,13 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="messages.php">Messages</a>
+                    <a class="nav-link" href="add_product.php">Add Product</a>
                 </li>
             </ul>
             <ul class="navbar-nav ml-right">
+                <li class="nav-item active">
+                    <a class="nav-link" href="messages.php">Messages</a>
+                </li>
             </ul>
         </div>
         <div class="collapse navbar-collapse" id="navbarResponsive">
