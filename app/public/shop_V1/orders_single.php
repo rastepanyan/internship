@@ -10,7 +10,7 @@ require_once("resources/connect.php");
 </head>
 <body>
 <!-- NAVBAR -->
-<?php include(FRONT . DS . "nav_adm.php") ?>
+<?php include(FRONT . DS . "nav_usr.php") ?>
 <div class="container">
     <div class="jumbotron">
         <div class="container-fluid text-center">
@@ -25,17 +25,6 @@ require_once("resources/connect.php");
             <!-- VIEW SINGLE ORDER -->
             <div class="col-lg-9">
                 <?php show_order($conn, $_GET['id']); ?>
-                <hr>
-                <div class="row w-100 d-block">
-                    <div class="col">
-                        <div class="float-left">
-                            <a href="checkout.php" class="btn btn-primary btn-block">Checkout</a>
-                        </div>
-                        <div class="float-right">
-                            <a href="order_list.php" class="btn btn-primary btn-block">Back</a>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>

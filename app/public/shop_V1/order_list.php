@@ -26,20 +26,7 @@ if (!is_admin()) {
                 </div>
                 <!-- ORDER LIST -->
                 <div class="col-lg-9">
-                    <div class="card card-outline-secondary">
-                        <div class="card-header">
-                            <h5><strong>Orders</strong></h5>
-                        </div>
-                        <?php get_single_order($conn, $_SESSION['user']['user_id']); ?>
-                    </div>
-                    <hr>
-                    <div class="row w-100 d-block">
-                        <div class="col">
-                            <div class="btn-toolbar float-right">
-                                <a href="index.php" class="btn btn-secondary btn-block">Back</a>
-                            </div>
-                        </div>
-                    </div>
+                    <?php get_single_order($conn, $_SESSION['user']['user_id']); ?>
                 </div>
             </div>
         </div>
@@ -73,20 +60,7 @@ if (!is_admin()) {
                 </div>
                 <!-- ORDER LIST -->
                 <div class="col-lg-9">
-                    <div class="card card-outline-secondary">
-                        <div class="card-header">
-                            <h5><strong>Orders</strong></h5>
-                        </div>
-                        <?php get_orders($conn); ?>
-                    </div>
-                    <hr>
-                    <div class="row w-100 d-block">
-                        <div class="col">
-                            <div class="btn-toolbar float-right">
-                                <a href="index.php" class="btn btn-secondary btn-block">Back</a>
-                            </div>
-                        </div>
-                    </div>
+                    <?php get_orders($conn); ?>
                 </div>
             </div>
         </div>

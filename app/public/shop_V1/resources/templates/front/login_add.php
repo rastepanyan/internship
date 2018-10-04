@@ -19,5 +19,4 @@
 <div class="text-center">
     <button type="submit" name="login_btn" class="btn btn-primary">Login</button>
 </div>
-</div>
 </form>

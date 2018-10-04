@@ -122,8 +122,9 @@ function get_single_order($conn, $user_id)
 //show orders
 function show_order($conn, $id)
 {
-    $sql = "SELECT order_id, positions, product_id, quantity, item_price 
-            FROM orderlines
+    $sql = "SELECT order_id, positions, title, quantity, item_price, amount 
+            FROM products
+            INNER JOIN orderlines USING(product_id)
             INNER JOIN orders USING(order_id)
             WHERE order_id =  " . $id;
     $result = $conn->query($sql);
