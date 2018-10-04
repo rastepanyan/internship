@@ -1,22 +1,12 @@
-<?php
-session_start();
-require_once("resources/connect.php");
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <!-- HEADER -->
-    <?php include(FRONT . DS . "header.php") ?>
+    <?php include(FRONT . DS . "header_edit.php") ?>
 </head>
 <body>
 <!-- NAVBAR -->
-<?php
-if (is_admin()) {
-    include(FRONT . DS . "nav_adm.php");
-} else {
-    include(FRONT . DS . "nav_usr.php");
-}
-?>
+<?php include(FRONT . DS . "nav_adm_edit.php") ?>
 <div class="container">
     <div class="jumbotron">
         <div class="container-fluid text-center">
@@ -28,15 +18,15 @@ if (is_admin()) {
                 <!-- GROUP SHORTCUTS -->
                 <?php include(FRONT . DS . "group_shortcut.php") ?>
             </div>
-            <!-- VIEW SINGLE ORDER -->
+            <!-- EDIT PRODUCT -->
             <div class="col-lg-9">
-                <?php show_order($conn, $_GET['id']); ?>
+                <?php include(FRONT . DS . "edit_product.php") ?>
             </div>
         </div>
     </div>
-    <!-- FOOTER -->
-    <?php include(FRONT . DS . "footer.php") ?>
 </div>
+<!-- FOOTER -->
+<?php include(FRONT . DS . "footer.php") ?>
 </div>
 </body>
 </html>

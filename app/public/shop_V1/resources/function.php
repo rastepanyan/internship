@@ -77,6 +77,19 @@ function show_product($conn, $id)
     }
 }
 
+//edit product
+function edit_product($conn, $id)
+{
+    $sql = "SELECT title, price, full_description, images 
+            FROM products
+            WHERE product_id =  " . $id;
+    $result = $conn->query($sql);
+
+    while ($row = $result->fetch_assoc()) {
+        include("../editing.php");
+    }
+}
+
 //delete product
 function delete_product($conn, $id)
 {
@@ -148,7 +161,7 @@ function add_product($conn)
     if ($conn->query($sql) === true) {
         redirect("../product_list.php");
     } else {
-        echo "ERROR: Record not added! $sql. " . $conn->error;
+        echo array_push($errors, "Product not added!");
     }
 }
 

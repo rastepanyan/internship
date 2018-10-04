@@ -4,6 +4,10 @@ require_once("connect.php");
 
 $id = $conn->escape_string($_POST['product_id']);
 
+if (isset($_POST['edit_btn'])) {
+    edit_product($conn, $id);
+}
+
 if (isset($_POST['delete_btn'])) {
     delete_product($conn, $id);
 }
