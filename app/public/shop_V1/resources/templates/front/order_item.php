@@ -38,7 +38,7 @@
                 </div>
                 <div class="float-right">
                     <?php
-                    $result = $conn->query("SELECT amount FROM orders WHERE order_id=" . $_GET['id']);
+                    $result = $conn->query("SELECT amount FROM orders WHERE order_id = " . $_GET['id']);
                     while ($row = $result->fetch_assoc()) {
                         ?>
                         <a class="hidden-xs text-center">
@@ -49,7 +49,6 @@
                         <?php
                     }
                     ?>
-
                 </div>
             </div>
         </div>

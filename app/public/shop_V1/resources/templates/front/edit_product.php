@@ -24,12 +24,19 @@
             </div>
         </div>
         <div class="card-body">
-            <label class="col-md-10 control-label" for="description">Description:</label>
+            <label class="col-md-10 control-label" for="short_description">Short Description:</label>
             <div class="col-md-10">
-                <textarea class="form-control" id="description" name="description"></textarea>
+                <textarea class="form-control" id="short_description" name="short_description"></textarea>
             </div>
         </div>
-    </div>
+            <div class="card-body">
+                <label class="col-md-10 control-label" for="full_description">Full Description:</label>
+                <div class="col-md-10">
+                    <textarea class="form-control" id="full_description" name="full_description"></textarea>
+                </div>
+            </div>
+        </div>
+
     <div class="card-body">
         <label class="col-md-4 control-label" for="images">Add Image:</label>
         <div class="col-md-4">

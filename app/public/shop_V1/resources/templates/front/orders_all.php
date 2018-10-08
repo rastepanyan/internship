@@ -24,8 +24,7 @@
                 <td><?php echo $row['order_date']; ?></td>
                 <td>&#163;<?php echo $row['amount']; ?></td>
                 <td>
-                    <a class="btn btn-primary btn-sm"
-                       href="orders_single.php?id=<?php echo $row['order_id']; ?>">View</a>
+                    <a class="btn btn-primary btn-sm" href="orders_single.php?id=<?php echo $row['order_id']; ?>">View</a>
                 </td>
             </tr>
             <?php

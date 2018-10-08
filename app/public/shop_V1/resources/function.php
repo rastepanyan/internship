@@ -11,12 +11,14 @@ function escape_string($conn, $val)
 }
 
 //query
-function query($conn, $sql) {
+function query($conn, $sql)
+{
     return mysqli_query($conn, $sql);
 }
 
 //fetch_assoc
-function fetch_assoc($result) {
+function fetch_assoc($result)
+{
     mysqli_fetch_assoc($result);
 }
 
@@ -69,7 +71,7 @@ function get_products($conn)
 //show products
 function show_product($conn, $id)
 {
-    $sql = "SELECT * FROM products WHERE product_id = " . $id;
+    $sql = "SELECT * FROM products WHERE product_id = '" . $id . "'";
     $result = $conn->query($sql);
 
     while ($row = $result->fetch_assoc()) {
@@ -80,9 +82,9 @@ function show_product($conn, $id)
 //edit product
 function edit_product($conn, $id)
 {
-    $sql = "SELECT title, price, full_description, images 
+    $sql = "SELECT title, price, short_description, full_description, images 
             FROM products
-            WHERE product_id =  " . $id;
+            WHERE product_id =  '" . $id . "'";
     $result = $conn->query($sql);
 
     while ($row = $result->fetch_assoc()) {
@@ -93,7 +95,7 @@ function edit_product($conn, $id)
 //delete product
 function delete_product($conn, $id)
 {
-    $sql = "DELETE FROM products WHERE product_id = " . $id;
+    $sql = "DELETE FROM products WHERE product_id = '" . $id . "'";
 
     if ($conn->query($sql) === true) {
         redirect("../product_list.php");
@@ -105,7 +107,7 @@ function delete_product($conn, $id)
 //get orders
 function get_orders($conn)
 {
-    $sql = "SELECT orders.order_id, users.user_id, CONCAT(first_name, \" \", last_name) AS names, order_date, amount
+    $sql = "SELECT orders.order_id, users.user_id, CONCAT(users.first_name, \" \", users.last_name) AS `names`, order_date, amount
             FROM users INNER JOIN orders USING(user_id)
             GROUP BY orders.order_id";
     $result = $conn->query($sql);
@@ -124,10 +126,8 @@ function get_single_order($conn, $user_id)
     $result = $conn->query($sql);
 
     if (mysqli_num_rows($result) == 1) {
-
         while ($row = $result->fetch_assoc()) {
             include("resources/templates/front/orders_all.php");
-
         }
     }
 }
@@ -137,9 +137,9 @@ function show_order($conn, $id)
 {
     $sql = "SELECT order_id, positions, title, quantity, item_price, amount 
             FROM products
-            INNER JOIN orderlines USING(product_id)
-            INNER JOIN orders USING(order_id)
-            WHERE order_id =  " . $id;
+            INNER JOIN orderlines USING(order_id)
+            LEFT JOIN orders USING(user_id)
+            WHERE orderlines.order_id =  '" . $id . "'";
     $result = $conn->query($sql);
 
     while ($row = $result->fetch_assoc()) {
@@ -152,16 +152,17 @@ function add_product($conn)
 {
     $title = $conn->escape_string($_REQUEST['title']);
     $price = $conn->escape_string($_REQUEST['price']);
-    $description = $conn->escape_string($_REQUEST['description']);
+    $short_description = $conn->escape_string($_REQUEST['short_description']);
+    $full_description = $conn->escape_string($_REQUEST['full_description']);
     $date_of_creation = $conn->escape_string($_REQUEST['date_of_creation']);
     $images = $conn->escape_string($_REQUEST['images']);
 
-    $sql = "INSERT INTO products (title, price, description, images, date_of_creation) VALUES ('$title', '$price', '$description', '$images', NOW($date_of_creation))";
+    $sql = "INSERT INTO products (title, price, short_description, full_description, images, date_of_creation) VALUES ('$title', '$price', '$short_description', '$full_description', '$images', NOW($date_of_creation))";
 
     if ($conn->query($sql) === true) {
         redirect("../product_list.php");
     } else {
-        echo array_push($errors, "Product not added!");
+        echo array_push($errors, "ERROR: Product not added!");
     }
 }
 
@@ -361,7 +362,7 @@ function receive_message($conn)
 //view message
 function view_message($conn, $id)
 {
-    $sql = "SELECT * FROM messages WHERE message_id = " . $id;
+    $sql = "SELECT * FROM messages WHERE message_id = '" . $id . "'";
     $result = $conn->query($sql);
 
     while ($row = $result->fetch_assoc()) {
@@ -372,7 +373,7 @@ function view_message($conn, $id)
 //delete message
 function delete_message($conn, $id)
 {
-    $sql = "DELETE FROM messages WHERE message_id = " . $id;
+    $sql = "DELETE FROM messages WHERE message_id = '" . $id . "'";
 
     if ($conn->query($sql) === true) {
         redirect("../messages.php");
