@@ -24,19 +24,18 @@
             </div>
         </div>
         <div class="card-body">
-            <label class="col-md-10 control-label" for="short_description">Short Description:</label>
+            <label class="col-md-12" for="short_description">Short Description:</label>
             <div class="col-md-10">
-                <textarea class="form-control" id="short_description" name="short_description"></textarea>
+                <input type="text" name="short_description" value="<?php echo $row['short_description']; ?>" id="short_description"/>
             </div>
         </div>
             <div class="card-body">
-                <label class="col-md-10 control-label" for="full_description">Full Description:</label>
+                <label class="col-md-12" for="full_description">Full Description:</label>
                 <div class="col-md-10">
-                    <textarea class="form-control" id="full_description" name="full_description"></textarea>
+                    <input type="text" name="full_description" value="<?php echo $row['full_description']; ?>" id="full_description"/>
                 </div>
             </div>
         </div>
-
     <div class="card-body">
         <label class="col-md-4 control-label" for="images">Add Image:</label>
         <div class="col-md-4">
@@ -47,7 +46,7 @@
     <div class="card-body">
         <label class="col-md-4 control-label" for="submit"></label>
         <div class="col-md-4">
-            <input class="btn btn-danger btn-md" type="submit" value="Save">
+            <button type="submit" name="save_btn" class="btn btn-danger">Save</button>
             <a class="btn btn-info btn-md" href="../product_list.php">Back</a>
         </div>
     </div>

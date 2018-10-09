@@ -68,7 +68,7 @@ function get_products($conn)
     }
 }
 
-//show products
+//show product
 function show_product($conn, $id)
 {
     $sql = "SELECT * FROM products WHERE product_id = '" . $id . "'";
@@ -79,16 +79,55 @@ function show_product($conn, $id)
     }
 }
 
+//add product
+function add_product($conn)
+{
+    $title = $conn->escape_string($_REQUEST['title']);
+    $price = $conn->escape_string($_REQUEST['price']);
+    $short_description = $conn->escape_string($_REQUEST['short_description']);
+    $full_description = $conn->escape_string($_REQUEST['full_description']);
+    $date_of_creation = $conn->escape_string($_REQUEST['date_of_creation']);
+    $images = $conn->escape_string($_REQUEST['images']);
+
+    $sql = "INSERT INTO products (title, price, short_description, full_description, images, date_of_creation) 
+            VALUES ('$title', '$price', '$short_description', '$full_description', '$images', NOW($date_of_creation))";
+
+    if ($conn->query($sql) === true) {
+        redirect("../product_list.php");
+    } else {
+        echo array_push($errors, "ERROR: Product not added!");
+    }
+}
+
 //edit product
 function edit_product($conn, $id)
 {
-    $sql = "SELECT title, price, short_description, full_description, images 
+    $sql = "SELECT title, price, short_description, full_description 
             FROM products
             WHERE product_id =  '" . $id . "'";
     $result = $conn->query($sql);
-
     while ($row = $result->fetch_assoc()) {
         include("../editing.php");
+    }
+}
+
+//save edited product
+function save_edited_product($conn, $id)
+{
+    $title = $conn->escape_string($_POST['title']);
+    $price = $conn->escape_string($_POST['price']);
+    $short_description = $conn->escape_string($_POST['short_description']);
+    $full_description = $conn->escape_string($_POST['full_description']);
+    $date_of_creation = $conn->escape_string($_POST['date_of_creation']);
+    $images = $conn->escape_string($_POST['images']);
+
+    $sql = "UPDATE products 
+            SET title = '$title', price = '$price', short_description = '$short_description', full_description = '$full_description', images = '$images', date_of_creation = '$date_of_creation' 
+            WHERE product_id = '" . $id . "'";
+    $result = $conn->query($sql);
+
+    while ($row = $result->fetch_assoc()) {
+        redirect("../product_single.php");
     }
 }
 
@@ -108,7 +147,8 @@ function delete_product($conn, $id)
 function get_orders($conn)
 {
     $sql = "SELECT orders.order_id, users.user_id, CONCAT(users.first_name, \" \", users.last_name) AS `names`, order_date, amount
-            FROM users INNER JOIN orders USING(user_id)
+            FROM users 
+            INNER JOIN orders USING(user_id)
             GROUP BY orders.order_id";
     $result = $conn->query($sql);
 
@@ -121,7 +161,8 @@ function get_orders($conn)
 function get_single_order($conn, $user_id)
 {
     $sql = "SELECT orders.order_id, users.user_id, CONCAT(users.first_name, \" \", users.last_name) AS `names`, order_date, amount
-    FROM users LEFT JOIN orders USING(user_id)
+    FROM users 
+    INNER JOIN orders USING(user_id)
     WHERE users.user_id = '" . $user_id . "'";
     $result = $conn->query($sql);
 
@@ -132,37 +173,16 @@ function get_single_order($conn, $user_id)
     }
 }
 
-//show orders
+//show order
 function show_order($conn, $id)
 {
-    $sql = "SELECT order_id, positions, title, quantity, item_price, amount 
+    $sql = "SELECT title, order_id, `position`, item_price, quantity
             FROM products
-            INNER JOIN orderlines USING(order_id)
-            LEFT JOIN orders USING(user_id)
-            WHERE orderlines.order_id =  '" . $id . "'";
+            INNER JOIN orderlines USING(product_id)
+            WHERE order_id =  '" . $id . "'";
     $result = $conn->query($sql);
-
     while ($row = $result->fetch_assoc()) {
         include("resources/templates/front/order_item.php");
-    }
-}
-
-//add product
-function add_product($conn)
-{
-    $title = $conn->escape_string($_REQUEST['title']);
-    $price = $conn->escape_string($_REQUEST['price']);
-    $short_description = $conn->escape_string($_REQUEST['short_description']);
-    $full_description = $conn->escape_string($_REQUEST['full_description']);
-    $date_of_creation = $conn->escape_string($_REQUEST['date_of_creation']);
-    $images = $conn->escape_string($_REQUEST['images']);
-
-    $sql = "INSERT INTO products (title, price, short_description, full_description, images, date_of_creation) VALUES ('$title', '$price', '$short_description', '$full_description', '$images', NOW($date_of_creation))";
-
-    if ($conn->query($sql) === true) {
-        redirect("../product_list.php");
-    } else {
-        echo array_push($errors, "ERROR: Product not added!");
     }
 }
 

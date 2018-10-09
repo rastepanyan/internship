@@ -20,7 +20,7 @@
             <tbody>
             <tr>
                 <th scope="row"><?php echo $row['order_id']; ?></th>
-                <td><?php echo $row['positions']; ?></td>
+                <td><?php echo $row['position']; ?></td>
                 <td><?php echo $row['title']; ?></td>
                 <td>&#163;<?php echo $row['item_price']; ?></td>
                 <td><?php echo $row['quantity']; ?></td>

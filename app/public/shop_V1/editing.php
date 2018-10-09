@@ -16,7 +16,7 @@
         <div class="row">
             <div class="col-lg-3">
                 <!-- GROUP SHORTCUTS -->
-                <?php include(FRONT . DS . "group_shortcut.php") ?>
+                <?php include(FRONT . DS . "edit_group_shortcut.php") ?>
             </div>
             <!-- EDIT PRODUCT -->
             <div class="col-lg-9">
