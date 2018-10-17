@@ -59,7 +59,7 @@ function get_products($conn)
             echo "<div class='row'>";
         }
 
-        include("resources/templates/front/products_all.php");
+        include("./resources/templates/front/products_all.php");
         $counter++;
 
         if ($counter % 3 == 0) {
@@ -75,7 +75,7 @@ function show_product($conn, $id)
     $result = $conn->query($sql);
 
     while ($row = $result->fetch_assoc()) {
-        include("resources/templates/front/product_item.php");
+        include("./resources/templates/front/product_item.php");
     }
 }
 
@@ -122,7 +122,7 @@ function save_edited_product($conn, $id)
     $images = $conn->escape_string($_POST['images']);
 
     $sql = "UPDATE products 
-            SET title = '$title', price = '$price', short_description = '$short_description', full_description = '$full_description', images = '$images', date_of_creation = '$date_of_creation' 
+            SET title = '$title', price = '$price', short_description = '$short_description', full_description = '$full_description', date_of_creation = '$date_of_creation', images = '$images' 
             WHERE product_id = '" . $id . "'";
     $result = $conn->query($sql);
 
@@ -153,7 +153,7 @@ function get_orders($conn)
     $result = $conn->query($sql);
 
     while ($row = $result->fetch_assoc()) {
-        include("resources/templates/front/orders_all.php");
+        include("./resources/templates/front/orders_all.php");
     }
 }
 
@@ -168,7 +168,7 @@ function get_single_order($conn, $user_id)
 
     if (mysqli_num_rows($result) == 1) {
         while ($row = $result->fetch_assoc()) {
-            include("resources/templates/front/orders_all.php");
+            include("./resources/templates/front/orders_all.php");
         }
     }
 }
@@ -182,7 +182,7 @@ function show_order($conn, $id)
             WHERE order_id =  '" . $id . "'";
     $result = $conn->query($sql);
     while ($row = $result->fetch_assoc()) {
-        include("resources/templates/front/order_item.php");
+        include("./resources/templates/front/order_item.php");
     }
 }
 
@@ -333,7 +333,7 @@ function register($conn, $errors, $first_name, $last_name, $address, $post_code,
 					  VALUES('$first_name', '$last_name', '$address', '$post_code', '$city', '$country_code', '$user_type', '$username', '$password')";
 
             $conn->query($sql);
-            redirect("./admin/index.php");
+            redirect("../index.php");
 
         } else {
             $sql = "INSERT INTO users (first_name, last_name, address, post_code, city, country_code, user_type, username, password)
@@ -375,7 +375,7 @@ function receive_message($conn)
     $result = $conn->query($sql);
 
     while ($row = $result->fetch_assoc()) {
-        include("resources/templates/front/message_view.php");
+        include("./resources/templates/front/message_view.php");
     }
 }
 
@@ -386,7 +386,7 @@ function view_message($conn, $id)
     $result = $conn->query($sql);
 
     while ($row = $result->fetch_assoc()) {
-        include("templates/front/message_read.php");
+        include("./templates/front/message_read.php");
     }
 }
 

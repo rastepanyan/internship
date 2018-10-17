@@ -16,7 +16,12 @@ class IndexController
     public function pageSecond()
     {
         return new Response(
-            '<html><body>Page 2</body></html>'
+            '<head>#
+
+
+</head>
+<body>
+Page 2</body></html>'
         );
     }
 }
