@@ -1,9 +1,6 @@
 index:
     path: /
     controller: Internship\Controller\IndexController::index
-second:
-    path: /page/2
-    controller: Internship\Controller\IndexController::pageSecond
 hello:
     path: /hello
     controller: Internship\Controller\HelloController::hello
