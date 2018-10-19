@@ -12,4 +12,16 @@ class IndexController
             '<html><body>This is the index page</body></html>'
         );
     }
+
+    public function pageSecond()
+    {
+        return new Response(
+            '<head>#
+
+
+</head>
+<body>
+Page 2</body></html>'
+        );
+    }
 }
