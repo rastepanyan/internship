@@ -1,18 +1,18 @@
 <?php
 
-namespace Internship\Controller\AppBundle\Controller;
+namespace Internship\Controller\Main;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Routing\Annotation\Route;
 
-class MainController extends Controller
+class HomepageController extends Controller
 {
     /**
      * @Route("/", name="homepage")
      */
     public function index()
     {
-        return $this->render('app_bundle/controller/default/index.html.twig', [
+        return $this->render('main/controller/default/index.html.twig', [
             'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
         ]);
     }

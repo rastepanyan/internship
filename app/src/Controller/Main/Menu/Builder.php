@@ -1,6 +1,6 @@
 <?php
 
-namespace Internship\Controller\AppBundle\Menu;
+namespace Internship\Controller\Main\Menu;
 
 use Knp\Menu\MenuFactory;
 

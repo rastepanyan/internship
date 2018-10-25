@@ -1,7 +1,8 @@
 <?php
 
-namespace Internship\Controller\CarBundle\Controller;
+namespace Internship\Controller\Extended;
 
+use Internship\Entity\Car;
 use Internship\Repository\CarRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Routing\Annotation\Route;
@@ -9,9 +10,8 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\HttpFoundation\Request;
-use Internship\Entity\Car;
 
-class DefaultController extends Controller
+class ExtendedController extends Controller
 {
     /**
      * @Route("/our-cars", name="offer", methods={"GET"})
@@ -43,7 +43,7 @@ class DefaultController extends Controller
             die("Form is submitted");
         }
 
-        return $this->render('car_bundle/controller/default/index.html.twig', [
+        return $this->render('extended/controller/default/index.html.twig', [
             'cars' => $cars,
             'form' => $form->createView()
         ]);
@@ -62,6 +62,6 @@ class DefaultController extends Controller
          */
         $carRepository = $this->getDoctrine()->getRepository(Car::class);
         $car = $carRepository->findCarsWithDetailsById($id);
-        return $this->render('car_bundle/controller/default/show.html.twig', ['car' => $car]);
+        return $this->render('extended/controller/default/show.html.twig', ['car' => $car]);
     }
 }
