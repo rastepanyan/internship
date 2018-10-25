@@ -1,3 +1,0 @@
-indexAction:
-    path: /
-    controller: App\Controller\DefaultController::indexAction

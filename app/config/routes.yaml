@@ -1,6 +1,3 @@
 index:
     path: /
-    controller: Internship\Controller\IndexController::index
-hello:
-    path: /hello
-    controller: Internship\Controller\HelloController::hello
+    controller: Internship\Controller\AppBundle\Controller\DefaultController::index
