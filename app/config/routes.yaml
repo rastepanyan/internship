@@ -1,3 +1,36 @@
-index:
+homepage:
     path: /
     controller: Internship\Controller\Main\HomepageController::index
+    methods: [GET]
+offer:
+    path: /our-cars
+    controller: Internship\Controller\Extended\ExtendedController::index
+    methods: [GET]
+show_car:
+    path: /car/{id}
+    controller: Internship\Controller\Extended\ExtendedController::show
+    methods: [GET]
+car_index:
+    path: /admin/car
+    controller: Internship\Controller\CarController::index
+    methods: [GET]
+car_promote:
+    path: /admin/car/promote/{id}
+    controller: Internship\Controller\CarController::promote
+    methods: [GET]
+car_new:
+    path: /admin/car/new
+    controller: Internship\Controller\CarController::new
+    methods: [GET|POST]
+car_show:
+    path: /admin/car/{id}
+    controller: Internship\Controller\CarController::show
+    methods: [GET]
+car_edit:
+    path: /admin/car/{id}/edit
+    controller: Internship\Controller\CarController::edit
+    methods: [GET|POST]
+car_delete:
+    path: /admin/car/{id}
+    controller: Internship\Controller\CarController::delete
+    methods: [DELETE]

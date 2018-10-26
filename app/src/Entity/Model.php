@@ -15,7 +15,6 @@ class Model
 {
     /**
      * @var int
-     *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
@@ -24,7 +23,6 @@ class Model
 
     /**
      * @var string
-     *
      * @ORM\Column(name="name", type="string", length=255)
      */
     private $name;
@@ -37,7 +35,6 @@ class Model
 
     /**
      * Get id
-     *
      * @return int
      */
     public function getId(): ?int
@@ -57,7 +54,6 @@ class Model
      * Add car
      *
      * @param Car $car
-     *
      * @return Model
      */
     public function addCar(Car $car)
@@ -91,7 +87,6 @@ class Model
      * Set name
      *
      * @param string $name
-     *
      * @return Model
      */
     public function setName($name)

@@ -15,7 +15,6 @@ class Make
 {
     /**
      * @var int
-     *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
@@ -24,7 +23,6 @@ class Make
 
     /**
      * @var string
-     *
      * @ORM\Column(name="name", type="string", length=255)
      */
     private $name;
@@ -57,7 +55,6 @@ class Make
      * Add car
      *
      * @param Car $car
-     *
      * @return Make
      */
     public function addCar(Car $car)
@@ -91,7 +88,6 @@ class Make
      * Set name
      *
      * @param string $name
-     *
      * @return Make
      */
     public function setName($name)

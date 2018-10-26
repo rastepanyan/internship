@@ -14,7 +14,6 @@ class Car
 {
     /**
      * @var int
-     *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
@@ -23,14 +22,12 @@ class Car
 
     /**
      * @var Model
-     *
      * @ORM\ManyToOne(targetEntity="Internship\Entity\Model", inversedBy="cars")
      */
     private $model;
 
     /**
      * @var Make
-     *
      * @ORM\ManyToOne(targetEntity="Internship\Entity\Make", inversedBy="cars")
      */
     private $make;
@@ -127,7 +124,6 @@ class Car
      * Set make
      *
      * @param string $make
-     *
      * @return Car
      */
     public function setMake($make)
@@ -151,7 +147,6 @@ class Car
      * Set navigation
      *
      * @param boolean $navigation
-     *
      * @return Car
      */
     public function setNavigation($navigation)
@@ -175,7 +170,6 @@ class Car
      * Set model
      *
      * @param Model $model
-     *
      * @return Car
      */
     public function setModel(Model $model = null)

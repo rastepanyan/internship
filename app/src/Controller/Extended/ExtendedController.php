@@ -5,7 +5,6 @@ namespace Internship\Controller\Extended;
 use Internship\Entity\Car;
 use Internship\Repository\CarRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
@@ -14,7 +13,8 @@ use Symfony\Component\HttpFoundation\Request;
 class ExtendedController extends Controller
 {
     /**
-     * @Route("/our-cars", name="offer", methods={"GET"})
+     * Our offer
+     *
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      *
@@ -28,7 +28,6 @@ class ExtendedController extends Controller
         $cars = $carRepository->findCarsWithDetails();
         $form = $this->createFormBuilder()
             ->setRequired(false)
-            ->setMethod('GET')
             ->add('search', TextType::class, [
                 'constraints' => [
                     new NotBlank(),
@@ -54,7 +53,6 @@ class ExtendedController extends Controller
      * @return \Symfony\Component\HttpFoundation\Response
      * @throws \Doctrine\ORM\NoResultException
      * @throws \Doctrine\ORM\NonUniqueResultException
-     * @Route("/car/{id}", name="show_car", methods={"GET"})
      */
     public function show($id) {
         /**

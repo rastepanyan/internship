@@ -8,18 +8,12 @@ use Internship\Entity\Car;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
 
-/**
- * Car controller.
- *
- * @Route("/admin/car")
- *
- */
 class CarController extends Controller
 {
     /**
-     * @Route("/", name="car_index", methods="GET")
+     * Car index
+     *
      * @param CarRepository $carRepository
      * @return Response
      */
@@ -33,7 +27,6 @@ class CarController extends Controller
      *
      * @param $id
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
-     * @Route("/promote/{id}", name="car_promote", methods="GET")
      */
     public function promote($id)
     {
@@ -54,7 +47,8 @@ class CarController extends Controller
     }
 
     /**
-     * @Route("/new", name="car_new", methods="GET|POST")
+     * Create new car profile
+     *
      * @param Request $request
      * @return Response
      */
@@ -79,7 +73,8 @@ class CarController extends Controller
     }
 
     /**
-     * @Route("/{id}", name="car_show", methods="GET")
+     * Show car details
+     *
      * @param int $id
      * @return Response
      */
@@ -90,7 +85,8 @@ class CarController extends Controller
     }
 
     /**
-     * @Route("/{id}/edit", name="car_edit", methods="GET|POST")
+     * Edit car details
+     *
      * @param Request $request
      * @param int $id
      * @return Response
@@ -114,7 +110,8 @@ class CarController extends Controller
     }
 
     /**
-     * @Route("/{id}", name="car_delete", methods="DELETE")
+     * Delete car profile
+     *
      * @param Request $request
      * @param int $id
      * @return Response

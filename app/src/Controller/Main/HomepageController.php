@@ -3,12 +3,14 @@
 namespace Internship\Controller\Main;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\Routing\Annotation\Route;
 
 class HomepageController extends Controller
 {
+
     /**
-     * @Route("/", name="homepage")
+     * Home page
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function index()
     {
