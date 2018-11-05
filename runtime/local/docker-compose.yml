@@ -1,4 +1,13 @@
-version: '3.2'
+version: '3.3'
+
+secrets:
+    mysql-user:
+        file: ./secrets/MYSQL_USER
+    mysql-password:
+        file: ./secrets/MYSQL_PASSWORD
+    mysql-root-password:
+        file: ./secrets/MYSQL_ROOT_PASSWORD
+
 services:
 
     app:
@@ -14,14 +23,19 @@ services:
             - "./volumes/apache_logs:/var/log/apache2/"
         ports:
             - 4080:80
+        secrets:
+            - mysql-user
+            - mysql-password
+            - mysql-root-password
         environment:
             TZ: "Europe/Sofia"
             APP_ROOT_DIR: /app
             VIRTUAL_HOST: "app.internship"
             VIRTUAL_PORT: 80
             MYSQL_HOST: "mysql-db" # better use docker secrets but this is for demo purposes
-            MYSQL_USER: "user"
-            MYSQL_PASSWORD: "pass"
+            MYSQL_USER_FILE: /run/secrets/mysql-user
+            MYSQL_PASSWORD_FILE: /run/secrets/mysql-password
+            MYSQL_ROOT_PASSWORD_FILE: /run/secrets/mysql-root-password
         networks:
             - frontend
             - backend
@@ -61,16 +75,21 @@ services:
             - backend
         ports:
             - 13306:3306
+        secrets:
+            - mysql-user
+            - mysql-password
+            - mysql-root-password
         environment:
             TZ: "UTC"
-            MYSQL_ROOT_PASSWORD: 123456 # this is for demo purposes, in real systems use MYSQL_ROOT_PASSWORD_FILE and docker secrets
-            MYSQL_USER: "mysql" # this is for demo purposes, in real systems use MYSQL_USER_FILE and docker secrets
-            MYSQL_PASSWORD: "pass" # this is for demo purposes, in real systems use MYSQL_PASSWORD_FILE and docker secrets
+            MYSQL_USER_FILE: /run/secrets/mysql-user
+            MYSQL_PASSWORD_FILE: /run/secrets/mysql-password
+            MYSQL_ROOT_PASSWORD_FILE: /run/secrets/mysql-root-password
             ADDITIONAL_DATABASES: "test_db"
 
-    pma-local:
-        image: phpmyadmin/phpmyadmin:4.7
-        container_name: internship_pma_local
+    adminer:
+        image: adminer:4.6-standalone
+        container_name: internship_adminer_local
+        restart: always
         depends_on:
             - mysql-db
         networks:
@@ -78,10 +97,26 @@ services:
             - backend
         environment:
             TZ: "Europe/Sofia"
+            VIRTUAL_PORT: 8080
+            VIRTUAL_HOST: "adminer.internship"
+
+    pma-local:
+        image: phpmyadmin/phpmyadmin:4.7
+        container_name: internship_pma_local
+        depends_on:
+            - mysql-db
+        volumes:
+            - "./config/pma/config.user.inc.php:/etc/phpmyadmin/config.user.inc.php"
+        networks:
+            - frontend
+            - backend
+        secrets:
+            - mysql-user
+            - mysql-password
+        environment:
+            TZ: "Europe/Sofia"
             PMA_HOSTS: mysql-db
             PMA_PORTS: 3306
-            PMA_USER: root
-            PMA_PASSWORD: 123456
             VIRTUAL_HOST: "pma.internship"
 
     proxy:

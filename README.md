@@ -25,14 +25,15 @@ To see all available commands type `make <tab>`.
 - `make ps` - shows the running containers and some information about them. Here is an example output
 
 ```
-          Name                         Command               State                        Ports                      
---------------------------------------------------------------------------------------------------------------------
-internship_app                 docker-php-entrypoint apac ...   Up       0.0.0.0:4080->80/tcp                           
-internship_composer 		   /docker-entrypoint.sh composer	Exit 0  												
-internship_mailhog             MailHog                          Up       1025/tcp, 8025/tcp                             
-internship_mysqldb             docker-entrypoint.sh mysql ...   Up       0.0.0.0:13306->3306/tcp                        
-internship_pma_local           /run.sh phpmyadmin               Up       80/tcp, 9000/tcp                               
-internship_proxy               /app/docker-entrypoint.sh  ...   Up       0.0.0.0:443->443/tcp, 0.0.0.0:80->80/tcp       
+          Name                        Command               State                     Ports                  
+-------------------------------------------------------------------------------------------------------------
+internship_adminer_local   entrypoint.sh docker-php-e ...   Up       8080/tcp                                
+internship_app             docker-php-entrypoint apac ...   Up       0.0.0.0:4080->80/tcp                    
+internship_composer        /bin/sh /docker-entrypoint ...   Exit 0                                           
+internship_mailhog         MailHog                          Up       1025/tcp, 8025/tcp                      
+internship_mysqldb         docker-entrypoint.sh mysql ...   Up       0.0.0.0:13306->3306/tcp                 
+internship_pma_local       /run.sh phpmyadmin               Up       80/tcp, 9000/tcp                        
+internship_proxy           /app/docker-entrypoint.sh  ...   Up       0.0.0.0:443->443/tcp, 0.0.0.0:80->80/tcp
 
 ```
 

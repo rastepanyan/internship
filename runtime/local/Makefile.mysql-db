@@ -3,16 +3,16 @@ MYSQL_DB_SERVICE_NAME=mysql-db
 
 _mysql-check-and-create-databases:
 	$(DC) exec $(MYSQL_DB_SERVICE_NAME) bash -c '\
-		while [[ `mysqladmin ping -uroot -p$$MYSQL_ROOT_PASSWORD 2>/dev/null` != "mysqld is alive" ]] ; \
+		while [[ `mysqladmin ping -uroot -p$$(cat $$MYSQL_ROOT_PASSWORD_FILE) 2>/dev/null` != "mysqld is alive" ]] ; \
 			do echo Waiting MySQL Server to start...; sleep 1; \
 		done ; \
 		\
 		echo $$ADDITIONAL_DATABASES \
 		| tr -d [:blank:] \
 		| tr "," "\n" \
-		| xargs -n 1 -I{} echo "CREATE DATABASE IF NOT EXISTS \`{}\`; GRANT ALL ON \`{}\`.* TO \`$$MYSQL_USER\`@\`%\`;" \
+		| xargs -n 1 -I{} echo "CREATE DATABASE IF NOT EXISTS \`{}\`; GRANT ALL ON \`{}\`.* TO \`$$(cat $$MYSQL_USER_FILE)\`@\`%\`;" \
 		| xargs -n 1 -I{} echo {} \
-		| mysql -uroot -p$$MYSQL_ROOT_PASSWORD 2>/dev/null'
+		| mysql -uroot -p`cat $$MYSQL_ROOT_PASSWORD_FILE` 2>/dev/null'
 
 ###### Administrativia #####################
 
@@ -26,5 +26,5 @@ mysql-db-rootshell:
 	$(DC) exec $(MYSQL_DB_SERVICE_NAME) bash
 
 mysql-db-mysql:
-	$(DC) exec --user mysql mysql-db sh -c 'mysql -u root -p$$MYSQL_ROOT_PASSWORD'
+	$(DC) exec --user mysql mysql-db sh -c 'mysql -u root -p`cat $$MYSQL_ROOT_PASSWORD_FILE`'
 
