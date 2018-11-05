@@ -1,36 +1,56 @@
-homepage:
+home:
     path: /
-    controller: Internship\Controller\Main\HomepageController::index
+    controller: Internship\Controller\HomeController::index
     methods: [GET]
-offer:
-    path: /our-cars
-    controller: Internship\Controller\Extended\ExtendedController::index
+    defaults:
+        template: 'home/index.html.twig'
+products:
+    path: /products
+    controller: Internship\Controller\HomeController::products
     methods: [GET]
-show_car:
-    path: /car/{id}
-    controller: Internship\Controller\Extended\ExtendedController::show
+    defaults:
+        template: 'products/product_list.html.twig'
+product:
+    path: /product/{id}
+    controller: Internship\Controller\HomeController::product
     methods: [GET]
-car_index:
-    path: /admin/car
-    controller: Internship\Controller\CarController::index
+    defaults:
+        template: 'products/product_item.html.twig'
+orders:
+    path: /orders
+    controller: Internship\Controller\HomeController::orders
     methods: [GET]
-car_promote:
-    path: /admin/car/promote/{id}
-    controller: Internship\Controller\CarController::promote
+    defaults:
+        template: 'orders/order_list.html.twig'
+order:
+    path: /order/{id}
+    controller: Internship\Controller\HomeController::order
     methods: [GET]
-car_new:
-    path: /admin/car/new
-    controller: Internship\Controller\CarController::new
-    methods: [GET|POST]
-car_show:
-    path: /admin/car/{id}
-    controller: Internship\Controller\CarController::show
+    defaults:
+        template: 'orders/order_list.html.twig'
+orderlines:
+    path: /orderlines/{id}
+    controller: Internship\Controller\HomeController::orderline
     methods: [GET]
-car_edit:
-    path: /admin/car/{id}/edit
-    controller: Internship\Controller\CarController::edit
-    methods: [GET|POST]
-car_delete:
-    path: /admin/car/{id}
-    controller: Internship\Controller\CarController::delete
-    methods: [DELETE]
+    defaults:
+        template: 'orders/order_item.html.twig'
+cart:
+    path: /cart
+    controller: Internship\Controller\HomeController::cart
+    defaults:
+        template: 'home/cart.html.twig'
+contacts:
+    path: /contacts
+    controller: Internship\Controller\HomeController::messages
+    defaults:
+        template: 'home/contacts.html.twig'
+login:
+    path: /login
+    controller: Internship\Controller\HomeController::login
+    defaults:
+        template: 'home/login.html.twig'
+signup:
+    path: /signup
+    controller: Internship\Controller\HomeController::signUp
+    defaults:
+        template: 'home/sign_up.html.twig'
