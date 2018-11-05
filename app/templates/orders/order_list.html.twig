@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="col-lg-9">
+        <div class="card card-outline-secondary">
+            <div class="card-header">
+                <h5><strong>Orders History</strong></h5>
+            </div>
+            <div class="card-body">
+                <table class="table table-responsive w-100 d-block d-md-table">
+                    <thead class="thead-light">
+                    <tr>
+                        <th scope="col" class="text-uppercase small font-weight-bold">order id</th>
+                        <th scope="col" class="text-uppercase small font-weight-bold">name</th>
+                        <th scope="col" class="text-uppercase small font-weight-bold">order date</th>
+                        <th scope="col" class="text-uppercase small font-weight-bold">total amount</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for order in orders %}
+                        <tr>
+                            <th scope="row">{{ order.id }}</th>
+                            <td>{{ order.user.firstName }} {{ order.user.lastName }}</td>
+                            <td>{{ order.orderDate }}</td>
+                            <td>&#163;{{ order.amount }}</td>
+                            <td>
+                                <a class="btn btn-primary btn-sm" href="{{ path('order', {id: order.id}) }}">View</a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="4">No records found!</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                <hr>
+                <div class="row w-100 d-block">
+                    <div class="col">
+                        <div class="btn-toolbar float-right">
+                            <a class="btn btn-secondary btn-block" href="{{ path('home') }}">Back</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta content="shop, online, bargain, quality, free, shoes, belts, dresses, jackets, hats, trousers, Plovdiv, centre"
+          name="keywords">
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('css/lib/bootstrap.css') }}">
+    {% endblock %}
+    <title>{% block title %}Shop{% endblock %}</title>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="{{ path('home') }}">ONLINE SHOP</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="{{ path('home') }}">Home</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-right">
+                <li class="nav-item active">
+                    <a class="nav-link" href="{{ path('signup') }}">Sign Up</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="{{ path('login') }}">Login</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="{{ path('cart') }}">Cart</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="{{ path('contacts') }}">Contacts</a>
+                </li>
+            </ul>
+        </div>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <hr class="profile_info">
+            <h5><strong></strong></h5>
+            <img src="{{ asset('img/blank.jpg') }}">
+            <div>
+                <small>
+                    <i style="color: greenyellow;">(<?php echo ucfirst($_SESSION['user']['user_type']); ?>)</i>
+                    <a name="logout" href="#" style="color: red;">Logout</a>
+                </small>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="jumbotron">
+        <div class="container-fluid text-center">
+            <h1>Online Shop</h1>
+            <p>Quality, Price and Assortment</p>
+        </div>
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="list-group">
+                    <a href="{{ path('products') }}" class="list-group-item active">Product List</a>
+                    <a href="{{ path('orders') }}" class="list-group-item">Order List</a>
+                </div>
+            </div>
+            {% block body %}{% endblock %}
+        </div>
+    </div>
+    <footer class="footer blockquote-footer">
+            <span class="text-muted">&copy; Copyright | 2018 &middot; <a href="https://www.dnhsoft.com/">DNH Soft</a>
+            </span>
+        <p class="text-right"><a href="#">Back to Top</a></p>
+    </footer>
+</div>
+{% block javascripts %}
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+{% endblock %}
+</body>
+</html>

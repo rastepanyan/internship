@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="col-lg-9">
+        <div class="card card-outline-secondary">
+            <div class="card-header">
+                <h5><strong>Your Cart</strong></h5>
+            </div>
+            <div class="card-body">
+                <table class="table table-responsive w-100 d-block d-md-table">
+                    <thead class="thead-light">
+                    <tr>
+                        <th scope="col" class="text-uppercase small font-weight-bold">position</th>
+                        <th scope="col" class="text-uppercase small font-weight-bold">product</th>
+                        <th scope="col" class="text-uppercase small font-weight-bold">price</th>
+                        <th scope="col" class="text-uppercase small font-weight-bold">quantity</th>
+                        <th scope="col" class="text-uppercase small font-weight-bold">amount</th>
+                        <th scope="col" class="text-uppercase small font-weight-bold">action</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <th scope="row" data-th="Position"></th>
+                        <td data-th="Product"></td>
+                        <td data-th="Price">&#163;</td>
+                        <td data-th="Quantity"></td>
+                        <td data-th="Amount">&#163;</td>
+                        <td class="actions">
+                            <form class="form-group" action="" method="post"
+                                  enctype="multipart/form-data">
+                                <input type="hidden" name="product_id" value=""/>
+                                <button type="submit" name="remove_from_cart_btn" class="btn btn-danger btn-sm">
+                                    Remove
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <hr>
+                <div class="row w-100 d-block">
+                    <div class="col">
+                        <div class="float-left">
+                            <a class="btn btn-primary btn-block" href="checkout.php">Go to Checkout</a>
+                            <a class="btn btn-secondary btn-block" href="product_list.php">Back</a>
+                        </div>
+                        <div class="float-right">
+                            <a class="hidden-xs text-center"><strong>Total Amount:<br>
+                                    <p class="text-center">&#163;</p>
+                                </strong></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

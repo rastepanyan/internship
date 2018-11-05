@@ -1,0 +1,19 @@
+{% block main %}
+    <div class="col-lg-4 col-md-6 mb-4">
+        <div class="card h-100">
+            <a href="{{ path('product', {id:product.id}) }}">
+                <img class="card-img-top" src="{{ asset('img/' ~ product.images) }}" alt="Image">
+            </a>
+            <div class="card-body">
+                <h4 class="card-title">
+                    <a href="{{ path('product', {id:product.id}) }}"><strong>{{ product.title }}</strong></a>
+                </h4>
+                <h5>&#163;{{ product.price }}</h5>
+                <p class="card-text text-justify">{{ product.shortDescription }}</p>
+            </div>
+            <div class="card-footer">
+                <small class="text-muted"></small>
+            </div>
+        </div>
+    </div>
+{% endblock %}
