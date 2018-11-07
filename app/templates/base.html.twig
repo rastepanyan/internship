@@ -46,8 +46,8 @@
             <img src="{{ asset('img/blank.jpg') }}">
             <div>
                 <small>
-                    <i style="color: greenyellow;">(<?php echo ucfirst($_SESSION['user']['user_type']); ?>)</i>
-                    <a name="logout" href="#" style="color: red;">Logout</a>
+                    <i style="color: greenyellow;">(<?php echo ucfirst($_SESSION['username']['roles']); ?>)</i>
+                    <a name="logout" href="{{ path('logout') }}" style="color: red;">Logout</a>
                 </small>
             </div>
         </div>

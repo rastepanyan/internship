@@ -4,12 +4,17 @@ namespace Internship\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Tests\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Table(name="users")
  * @ORM\Entity(repositoryClass="Internship\Repository\UserRepository")
+ * @UniqueEntity(fields="email", message="Email already taken")
+ * @UniqueEntity(fields="username", message="Username already taken")
  */
-class User
+class User implements UserInterface, \Serializable
 {
     /**
      * @var int
@@ -21,18 +26,18 @@ class User
     private $id;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="first_name", type="string", length=14)
-     */
-    private $firstName;
-
-    /**
      * @var ArrayCollection
      *
      * @ORM\OneToMany(targetEntity="Internship\Entity\Order", mappedBy="user")
      */
     private $order;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="first_name", type="string", length=14)
+     */
+    private $firstName;
 
     /**
      * @var string
@@ -72,23 +77,40 @@ class User
     /**
      * @var string
      *
-     * @ORM\Column(name="user_type", type="string", length=30)
+     * @ORM\Column(name="username", type="string", length=50, unique=true)
+     * @Assert\NotBlank()
+     * @Assert\Username()
      */
-    private $userType;
+    private $username;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="username", type="string", length=50)
+     * @ORM\Column(name="email", type="string", length=50, unique=true)
+     * @Assert\NotBlank()
+     * @Assert\Email()
      */
-    private $userName;
+    private $email;
+
+    /**
+     * @Assert\NotBlank()
+     * @Assert\Length(max=4096)
+     */
+    private $plainPassword;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="password", type="string", length=255)
+     * @ORM\Column(name="password", type="string", length=64)
      */
     private $password;
+
+    /**
+     * @var array
+     *
+     * @ORM\Column(name="roles", type="array")
+     */
+    private $roles = [];
 
     /**
      * @return int
@@ -104,22 +126,6 @@ class User
     public function setId(int $id): void
     {
         $this->id = $id;
-    }
-
-    /**
-     * @return string
-     */
-    public function getFirstName(): string
-    {
-        return $this->firstName;
-    }
-
-    /**
-     * @param string $firstName
-     */
-    public function setFirstName(string $firstName): void
-    {
-        $this->firstName = $firstName;
     }
 
     /**
@@ -141,9 +147,25 @@ class User
     /**
      * @return string
      */
+    public function getFirstName(): string
+    {
+        return $this->firstName ? $this->firstName : '';
+    }
+
+    /**
+     * @param string $firstName
+     */
+    public function setFirstName(string $firstName): void
+    {
+        $this->firstName = $firstName;
+    }
+
+    /**
+     * @return string
+     */
     public function getLastName(): string
     {
-        return $this->lastName;
+        return $this->lastName ? $this->lastName : '';
     }
 
     /**
@@ -159,7 +181,7 @@ class User
      */
     public function getAddress(): string
     {
-        return $this->address;
+        return $this->address ? $this->address : '';
     }
 
     /**
@@ -175,7 +197,7 @@ class User
      */
     public function getPostCode(): string
     {
-        return $this->postCode;
+        return $this->postCode ? $this->postCode : '';
     }
 
     /**
@@ -191,7 +213,7 @@ class User
      */
     public function getCity(): string
     {
-        return $this->city;
+        return $this->city ? $this->city : '';
     }
 
     /**
@@ -207,7 +229,7 @@ class User
      */
     public function getCountryCode(): string
     {
-        return $this->countryCode;
+        return $this->countryCode ? $this->countryCode : '';
     }
 
     /**
@@ -221,33 +243,49 @@ class User
     /**
      * @return string
      */
-    public function getUserType(): string
+    public function getUsername(): string
     {
-        return $this->userType;
+        return $this->username ? $this->username : '';
     }
 
     /**
-     * @param string $userType
+     * @param string $username
      */
-    public function setUserType(string $userType): void
+    public function setUsername(string $username): void
     {
-        $this->userType = $userType;
+        $this->username = $username;
     }
 
     /**
      * @return string
      */
-    public function getUserName(): string
+    public function getEmail(): string
     {
-        return $this->userName;
+        return $this->email ? $this->email : '';
     }
 
     /**
-     * @param string $userName
+     * @param string $email
      */
-    public function setUserName(string $userName): void
+    public function setEmail(string $email): void
     {
-        $this->userName = $userName;
+        $this->email = $email;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPlainPassword()
+    {
+        return $this->plainPassword;
+    }
+
+    /**
+     * @param mixed $plainPassword
+     */
+    public function setPlainPassword($plainPassword): void
+    {
+        $this->plainPassword = $plainPassword;
     }
 
     /**
@@ -264,5 +302,82 @@ class User
     public function setPassword(string $password): void
     {
         $this->password = $password;
+    }
+
+    /**
+     * @return array
+     */
+    public function getRoles(): array
+    {
+        $roles = $this->roles;
+        $roles[] = 'ROLE_USER';
+
+        return array_unique($roles);
+    }
+
+    /**
+     * @param array $roles
+     */
+    public function setRoles(array $roles): void
+    {
+        $this->roles = $roles;
+    }
+
+    /**
+     * @return string|null The salt
+     */
+    public function getSalt()
+    {
+        return null;
+    }
+
+    /**
+     * Removes sensitive data from the user.
+     *
+     * This is important if, at any given point, sensitive information like
+     * the plain-text password is stored on this object.
+     */
+    public function eraseCredentials()
+    {
+    }
+
+    /**
+     * @return string
+     */
+    public function serialize()
+    {
+        return serialize([
+            $this->id,
+            $this->firstName,
+            $this->lastName,
+            $this->address,
+            $this->postCode,
+            $this->city,
+            $this->countryCode,
+            $this->username,
+            $this->email,
+            $this->password,
+            $this->roles
+        ]);
+    }
+
+    /**
+     * @param $string
+     */
+    public function unserialize($string)
+    {
+        list(
+            $this->id,
+            $this->firstName,
+            $this->lastName,
+            $this->address,
+            $this->postCode,
+            $this->city,
+            $this->countryCode,
+            $this->username,
+            $this->email,
+            $this->password,
+            $this->roles
+            ) = unserialize($string, ['allowed_classes' => false]);
     }
 }

@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="col-lg-9">
+        <div class="card card-outline-secondary">
+            <div class="card-header">
+                <h5><strong>Registration Form</strong></h5>
+            </div>
+            <form class="form-group text-center" action="{{ path('signup') }}" method="post" enctype="multipart/form-data">
+                {{ form_start(form) }}
+                {{ form_widget(form) }}
+
+                <input type="submit" class="btn" value="Register" />
+                {{ form_end(form) }}
+            </form>
+        </div>
+    </div>
+{% endblock %}

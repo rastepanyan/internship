@@ -1,3 +1,9 @@
+admin:
+    path: /admin
+    controller: Internship\Controller\AdminController::admin
+    methods: [GET]
+    defaults:
+        template: 'admin/admin_index.html.twig'
 home:
     path: /
     controller: Internship\Controller\HomeController::index
@@ -41,11 +47,14 @@ contacts:
         template: 'home/contacts.html.twig'
 login:
     path: /login
-    controller: Internship\Controller\HomeController::login
+    controller: Internship\Controller\SecurityController::login
     defaults:
-        template: 'home/login.html.twig'
+        template: 'security/login.html.twig'
+logout:
+    path: /logout
+    controller: Internship\Controller\SecurityController::logout
 signup:
     path: /signup
-    controller: Internship\Controller\HomeController::signUp
+    controller: Internship\Controller\RegistrationController::register
     defaults:
-        template: 'home/sign_up.html.twig'
+        template: 'registration/register.html.twig'

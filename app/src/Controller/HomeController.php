@@ -7,11 +7,19 @@ use Internship\Repository\ProductRepository;
 use Internship\Repository\UserRepository;
 use Internship\Repository\OrderRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Response;
 
 class HomeController extends AbstractController
 {
     /**
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return Response
+     */
+    public function admin()
+    {
+        return $this->render('admin/admin_index.html.twig');
+    }
+    /**
+     * @return Response
      */
     public function index()
     {
@@ -19,7 +27,7 @@ class HomeController extends AbstractController
     }
 
     /**
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return Response
      */
     public function products()
     {
@@ -34,7 +42,7 @@ class HomeController extends AbstractController
 
     /**
      * @param $id
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return Response
      */
     public function product($id)
     {
@@ -48,7 +56,7 @@ class HomeController extends AbstractController
     }
 
     /**
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return Response
      */
     public function users()
     {
@@ -58,11 +66,11 @@ class HomeController extends AbstractController
         $userRepository = $this->getDoctrine()->getRepository('Internship:User');
         $users = $userRepository->findAll();
 
-        return $this->render('orders/order_list.html.twig', ['users' => $users]);
+        return $this->render('admin/user_list.html.twig', ['users' => $users]);
     }
 
     /**
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return Response
      */
     public function orders()
     {
@@ -78,7 +86,7 @@ class HomeController extends AbstractController
 
     /**
      * @param $id
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return Response
      */
     public function order($id)
     {
@@ -92,7 +100,7 @@ class HomeController extends AbstractController
     }
 
     /**
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return Response
      */
     public function cart()
     {
@@ -101,7 +109,7 @@ class HomeController extends AbstractController
     }
 
     /**
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return Response
      */
     public function messages()
     {
@@ -115,7 +123,7 @@ class HomeController extends AbstractController
     }
 
     /**
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return Response
      */
     public function login()
     {
@@ -123,7 +131,7 @@ class HomeController extends AbstractController
     }
 
     /**
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return Response
      */
     public function signUp()
     {
