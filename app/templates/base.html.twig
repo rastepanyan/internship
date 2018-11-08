@@ -24,8 +24,13 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="{{ path('home') }}">Home</a>
                 </li>
+                <li class="nav-item active">
+                    {% if is_granted('ROLE_ADMIN') %}
+                    <a class="nav-link" href="{{ path('messages') }}">Messages</a>
+                    {% endif %}
+                </li>
             </ul>
-            <ul class="navbar-nav ml-right">
+            <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
                     <a class="nav-link" href="{{ path('signup') }}">Sign Up</a>
                 </li>
@@ -33,10 +38,14 @@
                     <a class="nav-link" href="{{ path('login') }}">Login</a>
                 </li>
                 <li class="nav-item active">
+                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                     <a class="nav-link" href="{{ path('cart') }}">Cart</a>
+                    {% endif %}
                 </li>
                 <li class="nav-item active">
+                    {% if is_granted('ROLE_USER') %}
                     <a class="nav-link" href="{{ path('contacts') }}">Contacts</a>
+                    {% endif %}
                 </li>
             </ul>
         </div>
@@ -63,8 +72,12 @@
         <div class="row">
             <div class="col-lg-3">
                 <div class="list-group">
+                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                     <a href="{{ path('products') }}" class="list-group-item active">Product List</a>
                     <a href="{{ path('orders') }}" class="list-group-item">Order List</a>
+                    {% else %}
+                        <h3><strong>Please, Sign In</strong></h3>
+                    {% endif %}
                 </div>
             </div>
             {% block body %}{% endblock %}

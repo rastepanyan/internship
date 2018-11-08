@@ -15,7 +15,7 @@ class Message
      *
      * @ORM\Id()
      * @ORM\GeneratedValue(strategy="IDENTITY")
-     * @ORM\Column(name="message_id", type="integer", options={"unsigned"=true})
+     * @ORM\Column(name="id", type="integer", options={"unsigned"=true})
      */
     private $id;
 

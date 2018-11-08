@@ -45,6 +45,12 @@ contacts:
     methods: [GET]
     defaults:
         template: 'home/contacts.html.twig'
+messages:
+    path: /messages
+    controller: Internship\Controller\HomeController::messages
+    methods: [GET]
+    defaults:
+        template: 'home/messages.html.twig'
 login:
     path: /login
     controller: Internship\Controller\SecurityController::login

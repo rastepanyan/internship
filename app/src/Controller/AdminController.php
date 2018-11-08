@@ -13,9 +13,13 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class AdminController extends AbstractController
 {
+    /**
+     * @return Response
+     */
     public function admin()
     {
-        $this->denyAccessUnlessGranted('ROLE_ADMIN', null, 'User tried to access a page without permission');
+        $hasAccess = $this->isGranted('ROLE_ADMIN');
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
         $user = $this->getUser();
 
         return new Response('Hello, '.$user->getFirstName());

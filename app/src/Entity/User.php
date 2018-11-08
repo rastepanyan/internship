@@ -4,7 +4,7 @@ namespace Internship\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Tests\Constraints as Assert;
+use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -79,7 +79,6 @@ class User implements UserInterface, \Serializable
      *
      * @ORM\Column(name="username", type="string", length=50, unique=true)
      * @Assert\NotBlank()
-     * @Assert\Username()
      */
     private $username;
 
@@ -339,6 +338,31 @@ class User implements UserInterface, \Serializable
      */
     public function eraseCredentials()
     {
+
+    }
+
+    /**
+     * @return bool
+     */
+    public function isAccountNonExpired()
+    {
+        return true;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isAccountNonLocked()
+    {
+        return true;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isCredentialsNonExpired()
+    {
+        return true;
     }
 
     /**
@@ -346,7 +370,7 @@ class User implements UserInterface, \Serializable
      */
     public function serialize()
     {
-        return serialize([
+        return serialize(array(
             $this->id,
             $this->firstName,
             $this->lastName,
@@ -358,7 +382,7 @@ class User implements UserInterface, \Serializable
             $this->email,
             $this->password,
             $this->roles
-        ]);
+        ));
     }
 
     /**

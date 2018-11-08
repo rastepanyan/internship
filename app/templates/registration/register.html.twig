@@ -6,13 +6,84 @@
             <div class="card-header">
                 <h5><strong>Registration Form</strong></h5>
             </div>
-            <form class="form-group text-center" action="{{ path('signup') }}" method="post" enctype="multipart/form-data">
-                {{ form_start(form) }}
-                {{ form_widget(form) }}
-
-                <input type="submit" class="btn" value="Register" />
-                {{ form_end(form) }}
-            </form>
+            {{ form_start(form) }}
+            <div class="card-body text-center">
+                <div class="px-lg-5 pt-0">
+                    <div class="row">
+                        <div class="col-md-6 mb-2">
+                            <div class="md-form">
+                                <strong>{{ form_row(form.firstName) }}</strong>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-2">
+                            <div class="md-form">
+                                <strong>{{ form_row(form.lastName) }}</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="px-lg-5 pt-0">
+                    <div class="row">
+                        <div class="col-md-6 mb-2">
+                            <div class="md-form">
+                                <strong>{{ form_row(form.address) }}</strong>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-2">
+                            <div class="md-form">
+                                <strong>{{ form_row(form.postCode) }}</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="px-lg-5 pt-0">
+                    <div class="row">
+                        <div class="col-md-6 mb-2">
+                            <div class="md-form">
+                                <strong>{{ form_row(form.city) }}</strong>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-2">
+                            <div class="md-form">
+                                <strong>{{ form_row(form.countryCode) }}</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="px-lg-5 pt-0">
+                    <div class="row">
+                        <div class="col-md-6 mb-2">
+                            <div class="md-form">
+                                <strong>{{ form_row(form.username) }}</strong>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-2">
+                            <div class="md-form">
+                                <strong>{{ form_row(form.email) }}</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="px-lg-5 pt-0">
+                    <div class="row">
+                        <div class="col-md-6 mb-2">
+                            <div class="md-form">
+                                <strong>{{ form_row(form.plainPassword.first) }}</strong>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-2">
+                            <div class="md-form">
+                                <strong>{{ form_row(form.plainPassword.second) }}</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="card-body text-center">
+                <button type="submit" class="btn btn-primary">Register!</button>
+            </div>
+            {{ form_end(form) }}
         </div>
     </div>
 {% endblock %}

@@ -17,22 +17,26 @@ class RegistrationController extends AbstractController
      */
     public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder)
     {
-        $user = new User();
-        $form = $this->createForm(UserType::class, $user);
+        try {
+            $user = new User();
+            $form = $this->createForm(UserType::class, $user);
 
-        $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
+            $form->handleRequest($request);
+            if ($form->isSubmitted() && $form->isValid()) {
 
-            $password = $passwordEncoder->encodePassword($user, $user->getPlainPassword());
-            $user->setPassword($password);
+                $password = $passwordEncoder->encodePassword($user, $user->getPlainPassword());
+                $user->setPassword($password);
 
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($user);
-            $entityManager->flush();
+                $entityManager = $this->getDoctrine()->getManager();
+                $entityManager->persist($user);
+                $entityManager->flush();
 
-            return $this->redirectToRoute('home/index.html.twig');
+                return $this->redirectToRoute('home');
+            }
+
+            return $this->render('registration/register.html.twig', array('form' => $form->createView()));
+        } catch (\Exception $e) {
+            return $this->render('registration/register.html.twig', array('error' => $e->getMessage()));
         }
-
-        return $this->render('registration/register.html.twig', array('form' => $form->createView()));
     }
 }

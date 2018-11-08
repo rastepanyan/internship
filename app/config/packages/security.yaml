@@ -12,7 +12,9 @@ security:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
         main:
-            anonymous: true
+            pattern: ^/
+            anonymous: ~
+            http_basic: ~
             form_login:
                 login_path: login
                 check_path: login

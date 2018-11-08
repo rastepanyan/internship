@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="col-lg-9">
+        <div class="card card-outline-secondary">
+            <div class="card-header">
+                <h5><strong>Contact Us</strong></h5>
+            </div>
+            <div class="card card-outline-secondary">
+                <div class="card-body">
+                    <table class="table table-responsive w-100 d-block d-md-table">
+                        <thead class="thead-light">
+                        <tr>
+                            <th scope="col" class="text-uppercase small font-weight-bold">#</th>
+                            <th scope="col" class="text-uppercase small font-weight-bold">from</th>
+                            <th scope="col" class="text-uppercase small font-weight-bold">email</th>
+                            <th scope="col" class="text-uppercase small font-weight-bold">subject</th>
+                            <th scope="col" class="text-uppercase small font-weight-bold">view</th>
+                            <th scope="col" class="text-uppercase small font-weight-bold">action</th>
+                        </tr>
+                        </thead>
+                        {% for message in messages %}
+                        <tbody>
+                        <tr>
+                            <th scope="row">{{ message.id }}</th>
+                            <td>{{ message.fromName }}</td>
+                            <td>{{ message.email }}</td>
+                            <td>{{ message.subject }}</td>
+                            <td><a class="btn btn-info btn-sm" href="">View</a></td>
+                            <td><button type="submit" class="btn btn-danger btn-sm">Remove</button></td>
+                        </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="4">No records found!</td>
+                            </tr>
+                        </tbody>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}

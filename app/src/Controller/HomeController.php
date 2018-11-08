@@ -119,7 +119,7 @@ class HomeController extends AbstractController
         $messageRepository = $this->getDoctrine()->getRepository('Internship:Message');
         $messages = $messageRepository->findAll();
 
-        return $this->render('home/contacts.html.twig', ['messages' => $messages]);
+        return $this->render('home/messages.html.twig', ['messages' => $messages]);
     }
 
     /**
