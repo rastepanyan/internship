@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="card">
+        <div class="card-body">
+            <div class="col-md-5 mb-2">
+                <div class="md-form">
+                    <label for="title">Title:</label>
+                    <input id="title" type="text" name="title" class="form-control" required>
+                </div>
+            </div>
+        </div>
+        {{ form_start(form) }}
+        <div class="card-body">
+            <div class="col-md-3 mb-2">
+                <div class="md-form">
+                    <strong>{{ form_row(form.title) }}</strong>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="col-md-10">
+                <strong>{{ form_row(form.shortDescription) }}</strong>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="col-md-10">
+                <strong>{{ form_row(form.fullDescription) }}</strong>
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="col-md-4">
+            <strong>{{ form_row(form.images) }}</strong>
+        </div>
+    </div>
+    <hr>
+    <div class="card-body">
+        <label class="col-md-4 control-label" for="submit"></label>
+        <div class="col-md-4">
+            <button type="submit" class="btn btn-danger btn-md">Save</button>
+            <a class="btn btn-info btn-md" href="{{ path('products') }}">Back</a>
+        </div>
+    </div>
+    {{ form_end(form) }}
+{% endblock %}

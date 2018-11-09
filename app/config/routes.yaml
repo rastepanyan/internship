@@ -1,9 +1,3 @@
-admin:
-    path: /admin
-    controller: Internship\Controller\AdminController::admin
-    methods: [GET]
-    defaults:
-        template: 'admin/admin_index.html.twig'
 home:
     path: /
     controller: Internship\Controller\HomeController::index
@@ -22,6 +16,12 @@ product:
     methods: [GET]
     defaults:
         template: 'products/product.html.twig'
+addProduct:
+    path: /new
+    controller: Internship\Controller\AdminController::addProduct
+    methods: [GET]
+    defaults:
+        template: 'admin/add_product.html.twig'
 orders:
     path: /orders
     controller: Internship\Controller\HomeController::orders

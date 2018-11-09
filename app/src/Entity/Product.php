@@ -92,7 +92,7 @@ class Product
      */
     public function getTitle(): string
     {
-        return $this->title;
+        return $this->title ? $this->title : '';
     }
 
     /**
@@ -108,7 +108,7 @@ class Product
      */
     public function getPrice(): string
     {
-        return $this->price;
+        return $this->price ? $this->price : '';
     }
 
     /**
@@ -124,7 +124,7 @@ class Product
      */
     public function getShortDescription(): string
     {
-        return $this->shortDescription;
+        return $this->shortDescription ? $this->shortDescription : '';
     }
 
     /**
@@ -140,7 +140,7 @@ class Product
      */
     public function getFullDescription(): string
     {
-        return $this->fullDescription;
+        return $this->fullDescription ? $this->fullDescription : '';
     }
 
     /**
@@ -172,7 +172,7 @@ class Product
      */
     public function getImages(): string
     {
-        return $this->images;
+        return $this->images ? $this->images : '';
     }
 
     /**

@@ -14,13 +14,6 @@ class HomeController extends AbstractController
     /**
      * @return Response
      */
-    public function admin()
-    {
-        return $this->render('admin/admin_index.html.twig');
-    }
-    /**
-     * @return Response
-     */
     public function index()
     {
         return $this->render('home/index.html.twig');
