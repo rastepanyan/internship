@@ -2,9 +2,11 @@
 
 namespace Internship\Entity;
 
+use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints\DateTime;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\HttpFoundation\File\File;
 
 /**
  * @ORM\Table(name="products")
@@ -58,9 +60,14 @@ class Product
     private $dateOfCreation;
 
     /**
-     * @var string
+     * @var File
      *
-     * @ORM\Column(name="images", type="string", length=255)
+     * @ORM\Column(name="images")
+     * @Assert\File(
+     *     maxSize = "4096k",
+     *     mimeTypes={ "image/jpg", "image/jpeg", "image/png"},
+     *     mimeTypesMessage = "Only JPG, JPEG or PNG files are allowed."
+     * )
      */
     private $images;
 
@@ -70,6 +77,14 @@ class Product
      * @ORM\OneToMany(targetEntity="Orderline", mappedBy="product")
      */
     private $orderline;
+
+    /**
+     * Product constructor.
+     */
+    public function __construct()
+    {
+        $this->dateOfCreation = new \DateTime();
+    }
 
     /**
      * @return int
@@ -152,17 +167,17 @@ class Product
     }
 
     /**
-     * @return DateTime
+     * @return \DateTime
      */
-    public function getDateOfCreation(): DateTime
+    public function getDateOfCreation(): \DateTime
     {
         return $this->dateOfCreation;
     }
 
     /**
-     * @param DateTime $dateOfCreation
+     * @param \DateTime $dateOfCreation
      */
-    public function setDateOfCreation(DateTime $dateOfCreation): void
+    public function setDateOfCreation(\DateTime $dateOfCreation): void
     {
         $this->dateOfCreation = $dateOfCreation;
     }
@@ -176,9 +191,9 @@ class Product
     }
 
     /**
-     * @param string $images
+     * @param File $images
      */
-    public function setImages(string $images): void
+    public function setImages(File $images = null): void
     {
         $this->images = $images;
     }

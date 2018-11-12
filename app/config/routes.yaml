@@ -19,9 +19,19 @@ product:
 addProduct:
     path: /new
     controller: Internship\Controller\AdminController::addProduct
-    methods: [GET]
+    methods: [GET, POST]
     defaults:
         template: 'admin/add_product.html.twig'
+editProduct:
+    path: /edit/{id}
+    controller: Internship\Controller\AdminController::editProduct
+    methods: [GET, POST]
+    defaults:
+        template: 'admin/edit_product.html.twig'
+deleteProduct:
+    path: /{id}
+    controller: Internship\Controller\AdminController::deleteProduct
+    methods: [DELETE]
 orders:
     path: /orders
     controller: Internship\Controller\HomeController::orders

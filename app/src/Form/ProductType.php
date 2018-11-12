@@ -5,6 +5,7 @@ namespace Internship\Form;
 use Internship\Entity\Product;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -15,6 +16,7 @@ class ProductType extends AbstractType
     /**
      * @param FormBuilderInterface $builder
      * @param array $options
+     * @inheritdoc
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -36,7 +38,7 @@ class ProductType extends AbstractType
                     ]
             ])
 
-            ->add('shortDescription', TextType::class, [
+            ->add('shortDescription', TextareaType::class, [
                 'required' => true,
                 'constraints' =>
                     [
@@ -44,7 +46,7 @@ class ProductType extends AbstractType
                     ]
             ])
 
-            ->add('fullDescription', TextType::class, [
+            ->add('fullDescription', TextareaType::class, [
                 'required' => true,
                 'constraints' =>
                     [
@@ -52,7 +54,7 @@ class ProductType extends AbstractType
                     ]
             ])
 
-            ->add('images', FileType::class, array('label' => 'Image (JPG file)'))
+            ->add('images', FileType::class, array('attr' => array(), 'required' => false))
         ;
     }
 
