@@ -7,7 +7,7 @@
                 <h5><strong>Product</strong></h5>
             </div>
             <div class="col-lg-12 col-md-6 mb-4">
-                <img class="card-img-top img-fluid" src="{{ asset('img/' ~ product.images) }}" alt="Image">
+                <img class="card-img-top img-fluid" src="{{ asset('images/' ~ product.images) }}" alt="Image">
                 <div class="card-body">
                     <h3 class="card-title"><strong>{{ product.title }}</strong></h3>
                     <h4>&#163;{{ product.price }}</h4>
@@ -25,8 +25,7 @@
                         <div class="col">
                             <div class="float-left">
                                 <a href="{{ path('editProduct', {id: product.id}) }}" class="btn btn-info btn-block">Edit</a>
-                                <button type="submit" name="delete_btn" class="btn btn-danger btn-block">Delete
-                                </button>
+                                <a href="{{ path('deleteProduct', {id: product.id}) }}" class="btn btn-danger btn-block">Delete</a>
                             </div>
                             <div class="float-right">
                                 <a href="{{ url('products') }}" class="btn btn-primary btn-block">Cancel</a>
@@ -42,14 +41,13 @@
                 <div class="card-body">
                     <p>Quantity:</p>
                     <small class="text-muted">
-                        <input name="quantity" type="number" min="1" class="input-sm text-center" value="1"
-                               title="">
+                        <input name="quantity" type="number" min="1" class="input-sm text-center" value="1" title="">
                     </small>
                     <hr>
                     <div class="row w-100 d-block">
                         <div class="col">
                             <div class="float-left">
-                                <button type="submit" name="add_to_cart_btn" class="btn btn-info btn-block">Add to
+                                <button type="submit" class="btn btn-info btn-block">Add to
                                     Cart
                                 </button>
                             </div>

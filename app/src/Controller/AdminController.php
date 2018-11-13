@@ -44,63 +44,43 @@ class AdminController extends AbstractController
      * Edit product
      *
      * @param Request $request
-     * @param Product $product
-     * @return array|\Symfony\Component\HttpFoundation\RedirectResponse
+     * @return Response
      *
      */
-    public function editProduct(Request $request, Product $product)
+    public function editProduct(Request $request)
     {
-        $deleteForm = $this->createDeleteForm($product);
-        $editForm = $this->createForm(ProductType::class, $product);
-        $editForm->handleRequest($request);
-
-        if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
-
-            return $this->redirectToRoute('car_edit', array('id' => $product->getId()));
-        }
-
-        return array(
-            'product' => $product,
-            'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        );
-    }
-
-    /**
-     * Deletes a car entity.
-     *
-     * @param Request $request
-     * @param Product $product
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse
-     *
-     */
-    public function deleteProduct(Request $request, Product $product)
-    {
-        $form = $this->createDeleteForm($product);
+        $product = new Product();
+        $form = $this->createForm(ProductType::class, $product);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($product);
-            $em->flush();
+        if ($form->isSubmitted() && $form->isValid())
+        {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->flush();
+
+            return $this->redirectToRoute('product', array('id' => $product->getId()));
         }
 
-        return $this->redirectToRoute('car_index');
+        return $this->render('admin/edit_product.html.twig', array('form' => $form->createView()));
     }
 
     /**
-     * Creates a form to delete a car entity.
+     * Delete product
      *
-     * @param Product $product The car entity
-     * @return \Symfony\Component\Form\FormInterface The form
-     *
+     * @param $id
+     * @return Response
      */
-    private function createDeleteForm(Product $product)
+    public function deleteProduct($id)
     {
-        return $this->createFormBuilder()
-            ->setAction($this->generateUrl('deleteProduct', array('id' => $product->getId())))
-            ->setMethod('DELETE')
-            ->getForm();
+        $product = $this->getDoctrine()->getRepository(Product::class)->find($id);
+
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->remove($product);
+        $entityManager->flush();
+
+        $response = new Response();
+        $response->send();
+
+        return $this->redirectToRoute('product', array('id' => $product->getId()));
     }
 }

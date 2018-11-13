@@ -1,11 +1,10 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-<div class="card card-outline-secondary">
-    <div class="card-header">
-        <h5><strong>Add Product</strong></h5>
-    </div>
-    <div class="card-body">
+    <div class="card card-outline-secondary">
+        <div class="card-header">
+            <h5><strong>Add Product</strong></h5>
+        </div>
         {{ form_start(form) }}
         <div class="card-body">
             <div class="col-md-6 mb-2">
@@ -13,38 +12,30 @@
                     <strong>{{ form_row(form.title) }}</strong>
                 </div>
             </div>
-        </div>
-        <div class="card-body">
             <div class="col-md-5 mb-2">
                 <div class="md-form">
                     <strong>{{ form_row(form.price) }}</strong>
                 </div>
             </div>
-        </div>
-        <div class="card-body">
             <div class="col-md-10">
                 <strong>{{ form_row(form.shortDescription) }}</strong>
             </div>
-        </div>
-        <div class="card-body">
             <div class="col-md-10">
                 <strong>{{ form_row(form.fullDescription) }}</strong>
             </div>
+            <div class="col-md-4">
+                <div class="input-file">
+                    <strong>{{ form_row(form.images, {'attr':{class:'control-label input-file'}}) }}</strong>
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="card-body">
-        <div class="col-md-4">
-            <strong>{{ form_row(form.images) }}</strong>
+        <hr>
+        <div class="card-body">
+            <div class="col-md-4">
+                <button type="submit" class="btn btn-danger btn-md">Save</button>
+                <a class="btn btn-info btn-md" href="{{ path('products') }}">Back</a>
+            </div>
         </div>
+        {{ form_end(form) }}
     </div>
-    <hr>
-    <div class="card-body">
-        <label class="col-md-4 control-label" for="submit"></label>
-        <div class="col-md-4">
-            <button type="submit" class="btn btn-danger btn-md">Save</button>
-            <a class="btn btn-info btn-md" href="{{ path('products') }}">Back</a>
-        </div>
-    </div>
-    {{ form_end(form) }}
-</div>
 {% endblock %}
