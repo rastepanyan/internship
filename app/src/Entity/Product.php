@@ -2,9 +2,9 @@
 
 namespace Internship\Entity;
 
-use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\HttpFoundation\File\File;
 
@@ -53,23 +53,27 @@ class Product
     private $fullDescription;
 
     /**
-     * @var datetime
+     * @var \DateTime
      *
      * @ORM\Column(name="date_of_creation", type="datetime")
      */
     private $dateOfCreation;
 
     /**
-     * @var File
+     * @var string
      *
-     * @ORM\Column(name="images")
-     * @Assert\File(
-     *     maxSize = "4096k",
-     *     mimeTypes={ "image/jpg", "image/jpeg", "image/png"},
-     *     mimeTypesMessage = "Only JPG, JPEG or PNG files are allowed."
-     * )
+     * @ORM\Column(name="images", type="string")
      */
     private $images;
+
+    /**
+     * @Assert\NotBlank(message="Only JPG, JPEG or PNG files are allowed.")
+     * @Assert\File(
+     *     maxSize = "4096k",
+     *     mimeTypes={"image/jpg", "image/jpeg", "image/png"}
+     * )
+     */
+    private $imageFile;
 
     /**
      * @var ArrayCollection
@@ -191,9 +195,9 @@ class Product
     }
 
     /**
-     * @param File $images
+     * @param string $images
      */
-    public function setImages(File $images = null): void
+    public function setImages(string $images): void
     {
         $this->images = $images;
     }
@@ -213,4 +217,21 @@ class Product
     {
         $this->orderline = $orderline;
     }
+
+    /**
+     * @return UploadedFile
+     */
+    public function getImageFile()
+    {
+        return $this->imageFile;
+    }
+
+    /**
+     * @param UploadedFile $imageFile
+     */
+    public function setImageFile(UploadedFile $imageFile): void
+    {
+        $this->imageFile = $imageFile;
+    }
+
 }

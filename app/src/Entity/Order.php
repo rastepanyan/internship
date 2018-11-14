@@ -2,9 +2,8 @@
 
 namespace Internship\Entity;
 
-use DateTime;
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\ORM\PersistentCollection;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Table(name="orders")
@@ -22,7 +21,7 @@ class Order
     private $id;
 
     /**
-     * @var datetime
+     * @var \DateTime
      *
      * @ORM\Column(name="order_date", type="datetime")
      */
@@ -43,7 +42,7 @@ class Order
     private $amount;
 
     /**
-     * @var PersistentCollection
+     * @var ArrayCollection
      *
      * @ORM\OneToMany(targetEntity="Internship\Entity\Orderline", mappedBy="order")
      */
@@ -66,7 +65,7 @@ class Order
     }
 
     /**
-     * @return DateTime
+     * @return \DateTime
      */
     public function getOrderDate(): string
     {
@@ -74,9 +73,9 @@ class Order
     }
 
     /**
-     * @param DateTime $orderDate
+     * @param \DateTime $orderDate
      */
-    public function setOrderDate(DateTime $orderDate): void
+    public function setOrderDate(\DateTime $orderDate): void
     {
         $this->orderDate = $orderDate;
     }
@@ -114,17 +113,17 @@ class Order
     }
 
     /**
-     * @return PersistentCollection
+     * @return ArrayCollection
      */
-    public function getOrderLines(): PersistentCollection
+    public function getOrderLines(): ArrayCollection
     {
         return $this->orderLines;
     }
 
     /**
-     * @param PersistentCollection $orderLines
+     * @param ArrayCollection $orderLines
      */
-    public function setOrderLines(PersistentCollection $orderLines): void
+    public function setOrderLines(ArrayCollection $orderLines): void
     {
         $this->orderLines = $orderLines;
     }

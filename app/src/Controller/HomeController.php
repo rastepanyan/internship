@@ -45,6 +45,10 @@ class HomeController extends AbstractController
         $productRepository = $this->getDoctrine()->getRepository('Internship:Product');
         $product = $productRepository->find($id);
 
+        /*if (!$product) {
+            throw new NotFoundHttpException("Product with id: " . $id . " is not found!");
+        }*/
+
         return $this->render('products/product.html.twig', ['product' => $product]);
     }
 

@@ -22,7 +22,7 @@ class Orderline
     /**
      * @var Order
      *
-     * @ORM\ManyToOne(targetEntity="Internship\Entity\Order", inversedBy="orderline")
+     * @ORM\ManyToOne(targetEntity="Internship\Entity\Order", inversedBy="orderLines")
      */
     private $order;
 

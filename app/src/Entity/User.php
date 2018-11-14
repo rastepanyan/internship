@@ -79,7 +79,7 @@ class User implements UserInterface, \Serializable, EquatableInterface
      * @var string
      *
      * @ORM\Column(name="username", type="string", length=50, unique=true)
-     * @Assert\NotBlank()
+     * @Assert\NotBlank(message="Please, insert username!")
      */
     private $username;
 
@@ -87,13 +87,16 @@ class User implements UserInterface, \Serializable, EquatableInterface
      * @var string
      *
      * @ORM\Column(name="email", type="string", length=50, unique=true)
-     * @Assert\NotBlank()
-     * @Assert\Email()
+     * @Assert\NotBlank(message="Please type your email")
+     * @Assert\Email(
+     *     message = "The email '{{ value }}' is not valid.",
+     *     checkMX = true
+     * )
      */
     private $email;
 
     /**
-     * @Assert\NotBlank()
+     * @Assert\NotBlank(message="Type your password, please")
      * @Assert\Length(max=4096)
      */
     private $plainPassword;
