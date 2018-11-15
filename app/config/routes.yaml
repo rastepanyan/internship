@@ -49,18 +49,18 @@ cart:
     controller: Internship\Controller\HomeController::cart
     defaults:
         template: 'home/cart.html.twig'
-contacts:
-    path: /contacts
-    controller: Internship\Controller\HomeController::messages
-    methods: [GET]
+contact:
+    path: /contact
+    controller: Internship\Controller\ContactController::contact
+    methods: [GET, POST]
     defaults:
-        template: 'home/contacts.html.twig'
+        template: 'contact/contact.html.twig'
 messages:
     path: /messages
-    controller: Internship\Controller\HomeController::messages
+    controller: Internship\Controller\AdminController::messages
     methods: [GET]
     defaults:
-        template: 'home/messages.html.twig'
+        template: 'admin/message.html.twig'
 login:
     path: /login
     controller: Internship\Controller\SecurityController::login

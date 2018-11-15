@@ -17,6 +17,7 @@
                         </i>
                     </p>
                 </div>
+                {% if is_granted('ROLE_ADMIN') %}
                 <div class="card card-outline-secondary my-4">
                     <div class="card-header">
                         <h5><strong>Action</strong></h5>
@@ -36,6 +37,7 @@
                         </div>
                     </div>
                 </div>
+                {% endif %}
             </div>
             <div class="card card-outline-secondary my-4">
                 <div class="card-header">

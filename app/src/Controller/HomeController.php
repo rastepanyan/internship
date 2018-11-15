@@ -2,7 +2,6 @@
 
 namespace Internship\Controller;
 
-use Internship\Repository\MessageRepository;
 use Internship\Repository\ProductRepository;
 use Internship\Repository\UserRepository;
 use Internship\Repository\OrderRepository;
@@ -77,7 +76,6 @@ class HomeController extends AbstractController
         $orderRepository = $this->getDoctrine()->getRepository('Internship:Order');
         $orders = $orderRepository->findAll();
 
-
         return $this->render('orders/order_list.html.twig', ['orders' => $orders]);
     }
 
@@ -101,37 +99,6 @@ class HomeController extends AbstractController
      */
     public function cart()
     {
-
         return $this->render('home/cart.html.twig');
-    }
-
-    /**
-     * @return Response
-     */
-    public function messages()
-    {
-        /**
-         * @var $messageRepository MessageRepository
-         */
-        $messageRepository = $this->getDoctrine()->getRepository('Internship:Message');
-        $messages = $messageRepository->findAll();
-
-        return $this->render('home/messages.html.twig', ['messages' => $messages]);
-    }
-
-    /**
-     * @return Response
-     */
-    public function login()
-    {
-        return $this->render('home/login.html.twig');
-    }
-
-    /**
-     * @return Response
-     */
-    public function signUp()
-    {
-        return $this->render('home/sign_up.html.twig');
     }
 }

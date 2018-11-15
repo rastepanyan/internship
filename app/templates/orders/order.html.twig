@@ -16,16 +16,17 @@
                     <th scope="col" class="text-uppercase small font-weight-bold">quantity</th>
                 </tr>
                 </thead>
-                {% for orderline in order.orderlines %}
-                <tbody>
-                <tr>
-                    <th scope="row">{{ orderline.order.id }}</th>
-                    <td>{{ orderline.position }}</td>
-                    <td>{{ orderline.product.title }}</td>
-                    <td>&#163;{{ orderline.itemPrice }}</td>
-                    <td>{{ orderline.quantity }}</td>
-                </tr>
-                </tbody>
+
+                {% for orderline in order.orderLines %}
+                    <tbody>
+                    <tr>
+                        <th scope="row">{{ orderline.order.id }}</th>
+                        <td>{{ orderline.position }}</td>
+                        <td>{{ orderline.product.title }}</td>
+                        <td>&#163;{{ orderline.itemPrice }}</td>
+                        <td>{{ orderline.quantity }}</td>
+                    </tr>
+                    </tbody>
                 {% endfor %}
             </table>
             <hr>
@@ -37,7 +38,7 @@
                     <div class="float-right">
                         <a class="hidden-xs text-center">
                             <strong>Amount:<br>
-                               {{ order.amount }}
+                                {{ order.amount }}
                             </strong>
                         </a>
                     </div>

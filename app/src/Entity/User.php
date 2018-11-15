@@ -2,8 +2,8 @@
 
 namespace Internship\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\PersistentCollection;
 use Symfony\Component\Security\Core\User\EquatableInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
@@ -27,7 +27,7 @@ class User implements UserInterface, \Serializable, EquatableInterface
     private $id;
 
     /**
-     * @var ArrayCollection
+     * @var PersistentCollection
      *
      * @ORM\OneToMany(targetEntity="Internship\Entity\Order", mappedBy="user")
      */
@@ -132,17 +132,17 @@ class User implements UserInterface, \Serializable, EquatableInterface
     }
 
     /**
-     * @return ArrayCollection
+     * @return PersistentCollection
      */
-    public function getOrder(): ArrayCollection
+    public function getOrder(): PersistentCollection
     {
         return $this->order;
     }
 
     /**
-     * @param ArrayCollection $order
+     * @param PersistentCollection $order
      */
-    public function setOrder(ArrayCollection $order): void
+    public function setOrder(PersistentCollection $order): void
     {
         $this->order = $order;
     }

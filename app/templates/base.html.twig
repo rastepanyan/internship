@@ -44,7 +44,7 @@
                 </li>
                 <li class="nav-item active">
                     {% if is_granted('ROLE_USER') %}
-                    <a class="nav-link" href="{{ path('contacts') }}">Contacts</a>
+                    <a class="nav-link" href="{{ path('contact') }}">Contact</a>
                     {% endif %}
                 </li>
             </ul>
@@ -58,7 +58,7 @@
                     {% endif %}
                 </strong>
             </h5>
-            <img src="{{ asset('images/blank.jpg') }}">
+            <img src="{{ asset('images/main/blank.jpg') }}">
             <div>
                 <small>
                     <a name="logout" href="{{ path('logout') }}" style="color: red;">Logout</a>

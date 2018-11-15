@@ -2,8 +2,8 @@
 
 namespace Internship\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\PersistentCollection;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\HttpFoundation\File\File;
@@ -76,7 +76,7 @@ class Product
     private $imageFile;
 
     /**
-     * @var ArrayCollection
+     * @var PersistentCollection
      *
      * @ORM\OneToMany(targetEntity="Orderline", mappedBy="product")
      */
@@ -203,17 +203,17 @@ class Product
     }
 
     /**
-     * @return ArrayCollection
+     * @return PersistentCollection
      */
-    public function getOrderline(): ArrayCollection
+    public function getOrderline(): PersistentCollection
     {
         return $this->orderline;
     }
 
     /**
-     * @param ArrayCollection $orderline
+     * @param PersistentCollection $orderline
      */
-    public function setOrderline(ArrayCollection $orderline): void
+    public function setOrderline(PersistentCollection $orderline): void
     {
         $this->orderline = $orderline;
     }
@@ -233,5 +233,4 @@ class Product
     {
         $this->imageFile = $imageFile;
     }
-
 }

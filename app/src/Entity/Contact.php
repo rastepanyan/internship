@@ -5,10 +5,10 @@ namespace Internship\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Table(name="messages")
- * @ORM\Entity(repositoryClass="Internship\Repository\MessageRepository")
+ * @ORM\Table(name="contact")
+ * @ORM\Entity(repositoryClass="Internship\Repository\ContactRepository")
  */
-class Message
+class Contact
 {
     /**
      * @var int
@@ -18,35 +18,31 @@ class Message
      * @ORM\Column(name="id", type="integer", options={"unsigned"=true})
      */
     private $id;
-
     /**
      * @var string
      *
-     * @ORM\Column(name="from_name", type="string", length=30)
+     * @ORM\Column(name="name", type="string", length=30)
      */
-    private $fromName;
-
+    private $name;
     /**
      * @var string
      *
      * @ORM\Column(name="email", type="string", length=40)
      */
     private $email;
-
     /**
      * @var string
      *
      * @ORM\Column(name="subject", type="string", length=30)
      */
     private $subject;
-
     /**
      * @var string
      *
-     * @ORM\Column(name="the_message", type="text", length=255)
+     * @ORM\Column(name="message", type="text", length=65535)
      *
      */
-    private $theMessage;
+    private $message;
 
     /**
      * @return int
@@ -67,17 +63,17 @@ class Message
     /**
      * @return string
      */
-    public function getFromName(): string
+    public function getName(): string
     {
-        return $this->fromName;
+        return $this->name ? $this->name : '';
     }
 
     /**
-     * @param string $fromName
+     * @param string $name
      */
-    public function setFromName(string $fromName): void
+    public function setName(string $name): void
     {
-        $this->fromName = $fromName;
+        $this->name = $name;
     }
 
     /**
@@ -85,7 +81,7 @@ class Message
      */
     public function getEmail(): string
     {
-        return $this->email;
+        return $this->email ? $this->email : '';
     }
 
     /**
@@ -101,7 +97,7 @@ class Message
      */
     public function getSubject(): string
     {
-        return $this->subject;
+        return $this->subject ? $this->subject : '';
     }
 
     /**
@@ -115,16 +111,16 @@ class Message
     /**
      * @return string
      */
-    public function getTheMessage(): string
+    public function getMessage(): string
     {
-        return $this->theMessage;
+        return $this->message ? $this->message : '';
     }
 
     /**
-     * @param string $theMessage
+     * @param string $message
      */
-    public function setTheMessage(string $theMessage): void
+    public function setMessage(string $message): void
     {
-        $this->theMessage = $theMessage;
+        $this->message = $message;
     }
 }

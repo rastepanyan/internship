@@ -3,7 +3,7 @@
 namespace Internship\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\PersistentCollection;
 
 /**
  * @ORM\Table(name="orders")
@@ -42,7 +42,7 @@ class Order
     private $amount;
 
     /**
-     * @var ArrayCollection
+     * @var PersistentCollection
      *
      * @ORM\OneToMany(targetEntity="Internship\Entity\Orderline", mappedBy="order")
      */
@@ -113,17 +113,17 @@ class Order
     }
 
     /**
-     * @return ArrayCollection
+     * @return PersistentCollection
      */
-    public function getOrderLines(): ArrayCollection
+    public function getOrderLines(): PersistentCollection
     {
         return $this->orderLines;
     }
 
     /**
-     * @param ArrayCollection $orderLines
+     * @param PersistentCollection $orderLines
      */
-    public function setOrderLines(ArrayCollection $orderLines): void
+    public function setOrderLines(PersistentCollection $orderLines): void
     {
         $this->orderLines = $orderLines;
     }

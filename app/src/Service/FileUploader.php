@@ -29,7 +29,7 @@ class FileUploader
         try {
             $file->move($this->getTargetDir(), $fileName);
         } catch (FileException $exception) {
-            var_dump($exception->getMessage()); exit;
+            //var_dump($exception->getMessage()); exit;
         }
 
         return $fileName;

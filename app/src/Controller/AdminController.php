@@ -2,6 +2,7 @@
 
 namespace Internship\Controller;
 
+use Internship\Repository\ContactRepository;
 use Internship\Service\FileUploader;
 use Internship\Entity\Product;
 use Internship\Form\ProductType;
@@ -29,7 +30,7 @@ class AdminController extends AbstractController
         $form = $this->createForm(ProductType::class, $product);
         $form->handleRequest($request);
 
-        if($form->isSubmitted() && $form->isValid())
+        if ($form->isSubmitted() && $form->isValid())
         {
             $file = $product->getImageFile();
             $fileName = $fileUploader->upload($file);
@@ -61,7 +62,7 @@ class AdminController extends AbstractController
         $form = $this->createForm(ProductType::class, $product);
         $form->handleRequest($request);
 
-        if($form->isSubmitted() && $form->isValid())
+        if ($form->isSubmitted() && $form->isValid())
         {
             $file = $product->getImageFile();
             $fileName = $fileUploader->upload($file);
@@ -90,5 +91,20 @@ class AdminController extends AbstractController
         $entityManager->flush();
 
         return $this->redirectToRoute('products');
+    }
+
+    /**
+     * Read message
+     *
+     */
+    public function messages()
+    {
+        /**
+         * @var $contactRepository ContactRepository
+         */
+        $contactRepository = $this->getDoctrine()->getRepository('Internship:Contact');
+        $messages = $contactRepository->findAll();
+
+        return $this->render('admin/message.html.twig', ['messages' => $messages]);
     }
 }

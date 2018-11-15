@@ -6,6 +6,7 @@ use Internship\Entity\User;
 use Internship\Form\UserType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class RegistrationController extends AbstractController
@@ -13,15 +14,15 @@ class RegistrationController extends AbstractController
     /**
      * @param Request $request
      * @param UserPasswordEncoderInterface $passwordEncoder
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @return Response
      */
     public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder)
     {
         try {
             $user = new User();
             $form = $this->createForm(UserType::class, $user);
-
             $form->handleRequest($request);
+
             if ($form->isSubmitted() && $form->isValid()) {
 
                 $password = $passwordEncoder->encodePassword($user, $user->getPlainPassword());
@@ -35,8 +36,8 @@ class RegistrationController extends AbstractController
             }
 
             return $this->render('registration/register.html.twig', array('form' => $form->createView()));
-        } catch (\Exception $e) {
-            return $this->render('registration/register.html.twig', array('error' => $e->getMessage()));
+        } catch (\Exception $exception) {
+            return $this->redirectToRoute('home');
         }
     }
 }
