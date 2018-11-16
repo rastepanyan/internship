@@ -94,8 +94,9 @@ class AdminController extends AbstractController
     }
 
     /**
-     * Read message
+     * Read all messages
      *
+     * @return Response
      */
     public function messages()
     {
@@ -105,6 +106,23 @@ class AdminController extends AbstractController
         $contactRepository = $this->getDoctrine()->getRepository('Internship:Contact');
         $messages = $contactRepository->findAll();
 
-        return $this->render('admin/message.html.twig', ['messages' => $messages]);
+        return $this->render('admin/message_list.html.twig', ['messages' => $messages]);
+    }
+
+    /**
+     * Read single message
+     *
+     * @param $id
+     * @return Response
+     */
+    public function message($id)
+    {
+        /**
+         * @var $contactRepository ContactRepository
+         */
+        $contactRepository = $this->getDoctrine()->getRepository('Internship:Contact');
+        $message = $contactRepository->find($id);
+
+        return $this->render('admin/message.html.twig', ['message' => $message]);
     }
 }

@@ -60,6 +60,12 @@ messages:
     controller: Internship\Controller\AdminController::messages
     methods: [GET]
     defaults:
+        template: 'admin/message_list.html.twig'
+message:
+    path: /message/{id}
+    controller: Internship\Controller\AdminController::message
+    methods: [GET]
+    defaults:
         template: 'admin/message.html.twig'
 login:
     path: /login

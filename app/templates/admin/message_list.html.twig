@@ -4,33 +4,33 @@
     <div class="col-lg-9">
         <div class="card card-outline-secondary">
             <div class="card-header">
-                <h5><strong>Orders History</strong></h5>
+                <h5><strong>All Messages</strong></h5>
             </div>
             <div class="card-body">
                 <table class="table table-responsive w-100 d-block d-md-table">
                     <thead class="thead-light">
                     <tr>
-                        <th scope="col" class="text-uppercase small font-weight-bold">order id</th>
+                        <th scope="col" class="text-uppercase small font-weight-bold">id</th>
                         <th scope="col" class="text-uppercase small font-weight-bold">name</th>
-                        <th scope="col" class="text-uppercase small font-weight-bold">order date</th>
-                        <th scope="col" class="text-uppercase small font-weight-bold">total amount</th>
+                        <th scope="col" class="text-uppercase small font-weight-bold">email</th>
+                        <th scope="col" class="text-uppercase small font-weight-bold">subject</th>
                         <th></th>
                     </tr>
                     </thead>
                     <tbody>
-                    {% for order in orders %}
+                    {% for message in messages %}
                         <tr>
-                            <th scope="row">{{ order.id }}</th>
-                            <td>{{ order.user.firstName }} {{ order.user.lastName }}</td>
-                            <td>{{ order.orderDate }}</td>
-                            <td>&#163;{{ order.amount }}</td>
+                            <th scope="row">{{ message.id }}</th>
+                            <td>{{ message.name }}</td>
+                            <td>{{ message.email }}</td>
+                            <td>{{ message.subject }}</td>
                             <td>
-                                <a class="btn btn-info btn-sm" href="{{ path('order', {id: order.id}) }}">View</a>
+                                <a class="btn btn-info btn-sm" href="{{ path('message', {id: message.id}) }}">View</a>
                             </td>
                         </tr>
                     {% else %}
                         <tr>
-                            <td colspan="4">No records found!</td>
+                            <td colspan="4">No messages found!</td>
                         </tr>
                     {% endfor %}
                     </tbody>
